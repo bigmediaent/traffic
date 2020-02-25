@@ -24,7 +24,7 @@
     };
 
 
-  var docids = ['video_id_1','video_id_2'];
+  var docids = ['video_id_1'];
 
   
    var variables = ['eyJzdGF0dXMiOiJmYWlsIiwicmVhc29uIjoiSW52YWxpZCBwYXJhbWV0ZXJzLiIsImVycm9yY29kZSI6IjIifQ==','eyJyZWFzb24iOiJJbnZhbGlkIHBhcmFtZXRlcnMuIiwic3RhdHVzIjoiZmFpbCIsImVycm9yY29kZSI6IjIifQ=='];
