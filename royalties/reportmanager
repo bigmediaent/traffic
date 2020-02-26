@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+        <base href="/" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"b44b50cd66",applicationID:"14394334"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+    <title>Financial Reports </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- JQUERY -->
+    <script src="//static.believedigital.com/frameworks/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+
+            <script type="text/JavaScript">
+            window.zESettings = {
+                webWidget: {
+                    contactForm: {
+                        subject: true,
+                        attachments: false
+                    }
+                }
+            };
+
+        </script>
+        <!-- Start of believedigital Zendesk Widget script -->
+        <script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var e=this.createElement("script");n&&(this.domain=n),e.id="js-iframe-async",e.src="https://assets.zendesk.com/embeddable_framework/main.js",this.t=+new Date,this.zendeskHost="believedigital.zendesk.com",this.zEQueue=a,this.body.appendChild(e)},o.write('<body onload="document._l();">'),o.close()}();
+            /*]]>*/</script>
+        <!-- End of believedigital Zendesk Widget script -->
+        <script>
+            zE(function() {
+                zE.identify({
+                    name: "Crown Digital Media",
+                    email: "kingmaanpreet@gmail.com"
+                });
+            });
+        </script>
+
+    
+    
+
+<link  rel="stylesheet" type="text/css" href="/assets/common/jqueryui/css/1.10.4/blitzer/jquery-ui-1.10.4.custom.css?assetVersion=1.144.4" file-checksum="81f4d1d6e32adf47202fa651f639515a" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/plugins/other/material-icons/default/material-icons.css?assetVersion=1.144.4" plugin-data="materialicons" file-checksum="6501500c2cce8839f0dcd46be0d7b116" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/frameworks/jqueryui/themes/blitzer/default/jquery-ui.custom.min.css?assetVersion=1.144.4" plugin-data="jqueryuithemeblitzer" file-checksum="5e3f9c9afb68f85be4cbed1fa300badd" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/plugins/other/bootstrap-tour/default/css/bootstrap-tour.min.css?assetVersion=1.144.4" plugin-data="bootstraptour" file-checksum="0f8771530d00808f0f50588e7edd9663" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/plugins/believe/blvsteps/default/css/blvsteps.css?assetVersion=1.144.4" plugin-data="blvsteps" file-checksum="84c0e8e6a96dd0f58dd93616147f3e01" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/frameworks/bootstrap3/default/css/bootstrap.min.css?assetVersion=1.144.4" plugin-data="bootstrap3" file-checksum="af5b54287e59bab7c6aa61445eaf163c" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/plugins/other/bootstrap-datepicker/default/css/bootstrap-datepicker.min.css?assetVersion=1.144.4" plugin-data="bootstrapdatepicker" file-checksum="d3c6e0a2415549499253776a2276dc51" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/plugins/other/bootstrap-datepicker/default/css/bootstrap-datepicker-customize.min.css?assetVersion=1.144.4" plugin-data="bootstrapdatepicker" file-checksum="6995b44a35740614f9642a5aed7caaa8" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/plugins/believe/believefont/default/css/believefont.css?assetVersion=1.144.4" plugin-data="believefont" file-checksum="9a8fbd12dc8d77eb5580b844ee98960f" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/plugins/other/jquery-select2/default/css/select2.css?assetVersion=1.144.4" plugin-data="select2" file-checksum="95cb30aabe69b1320d230718ba33adff" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/plugins/other/jquery-select2/default/css/select2-bootstrap.css?assetVersion=1.144.4" plugin-data="select2" file-checksum="44c88e05c5aee5b9ef90600b3563cc20" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/plugins/other/font-awesome/default/css/font-awesome.min.css?assetVersion=1.144.4" plugin-data="fontawesome" file-checksum="ec037293d10196a9e003ed439c888b57" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/local/backstage/views/royalties/css/reportmanager.css?assetVersion=1.144.4" file-checksum="577e69a80ca9c1bf2bd3df22f9b0b415" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/fonts/OpenSans/opensans.css" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/local/bs2020/layouts/layout.css?assetVersion=1.144.4" file-checksum="ca9b22ada9f3c51983ca273695e3e7b3" />
+<link  rel="stylesheet" type="text/css" href="//static.believedigital.com/local/bs2020/layouts/menu.css?assetVersion=1.144.4" file-checksum="9417d6eeaeb69b749fb051e10f8ea25f" />
+</head>
+
+<body>
+
+    <div id="bs-table-container">
+
+        <!-- LEFT PART / MENU -->
+        <div id="bs-left">
+
+            <div id="bs-left-container">
+                <div id="bs-left-logo"><a href="/"><img src="//static.believedigital.com/local/bs2020/layouts/logo/backstage150x30.png" /></a></div>
+                <div id="bs-left-menu"><div class="bs-menu-group bs-menu-group-0 bs-menu-group-id-144"><div class="bs-menu-group-description"><div><i class="material-icons">add_circle</i>New Release</div></div><div class="bs-menu-group-content " ><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-335"><a href="easyentry/"><div>New Release</div></a></div><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-879"><a href="easyentry/creation/release"><div>One Release</div></a></div><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-880"><a href="easyentry/creation/multiplesreleases"><div>Multiple releases</div></a></div></div></div><div class="bs-menu-group bs-menu-group-0 bs-menu-group-id--1"><div class="bs-menu-group-description"><a href="/index"><div><i class="material-icons">dashboard</i>Overview</div></a></div><div class="bs-menu-group-content hidden" ><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-0"><a href="/index"><div>Overview</div></a></div></div></div><div class="bs-menu-group bs-menu-group-0 bs-menu-group-id-1"><div class="bs-menu-group-description"><div><i class="material-icons">library_music</i>Catalog</div></div><div class="bs-menu-group-content " ><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-3"><a href="catalog/manager"><div>All Releases</div></a></div><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-2"><a href="catalog/manager?~formSubmitted=1&bsStatus%5B%5D=inprogress"><div>Drafts</div></a></div><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-99"><a href="catalog/manager?~formSubmitted=1&bsStatus%5B%5D=tocorrect"><div>Correction Requested</div></a></div></div></div><div class="bs-menu-group bs-menu-group-0 bs-menu-group-id-65 bs-menu-group-datamusic"><div class="bs-menu-group-description"><a href="analytics/menu"><div><i class="material-icons">insert_chart</i>Analytics<span class="bs-menu-group-subtitle">Powered by <big>Datamusic</big></span></div></a></div><div class="bs-menu-group-content " ><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-332"><a href="analytics/dailytrends/overview"><div>Daily Trends</div></a></div><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-628"><a href="analytics/storechartmonitoring"><div>Digital Charts</div></a></div></div></div><div class="bs-menu-group bs-menu-group-0 bs-menu-group-id-2"><div class="bs-menu-group-description"><div><i class="material-icons">new_releases</i>Promotion <div class="bs-menu-new">new</div></div></div><div class="bs-menu-group-content " ><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-865"><a href="promotion/artistcertification"><div>Apple Music for Artists Certification <div class="bs-menu-new">new</div></div></a></div><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-872"><a href="promotion/backlink"><div>Backlink <div class="bs-menu-new">new</div></div></a></div><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-570"><a href="promotion/player"><div>Players</div></a></div><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-571"><a href="analytics/player"><div>Player Statistics</div></a></div></div></div><div class="bs-menu-group bs-menu-group-0 bs-menu-group-id-122"><div class="bs-menu-group-description"><a href="analytics/royalties"><div><i class="material-icons">gps_fixed</i>Marketing</div></a></div><div class="bs-menu-group-content " ><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-63"><a href="analytics/royalties"><div>Sales and Trend Overview</div></a></div></div></div><div class="bs-menu-group bs-menu-group-0 bs-menu-group-id-6 bs-menu-group-content-open bs-menu-group-current"><div class="bs-menu-group-description"><div><i class="material-icons">attach_money</i>Financial</div></div><div class="bs-menu-group-content " style="display:block;"><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-774"><a href="royalties/paymentmanager"><div>Payments</div></a></div><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-775 bs-menu-program-current"><a href="royalties/reportmanager"><div>Financial Reports</div></a></div><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-136"><a href="royalties/faq/index"><div>Financial FAQ</div></a></div></div></div><div class="bs-menu-group bs-menu-group-0 bs-menu-group-id-92"><div class="bs-menu-group-description"><a href="neighboringrights/cumulatedsales"><div><i class="material-icons">account_balance</i>Neighbouring Rights</div></a></div><div class="bs-menu-group-content " ><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-52"><a href="neighboringrights/cumulatedsales"><div>French Cumulated Sales Declaration (SPPF/SCPP)</div></a></div></div></div><div class="bs-menu-group bs-menu-group-0 bs-menu-group-id-145"><div class="bs-menu-group-description"><a href="youtube/conflicts"><div><i class="material-icons">vpn_lock</i>Legal</div></a></div><div class="bs-menu-group-content " ><div class="bs-menu-program bs-menu-program-1 bs-menu-program-id-459"><a href="youtube/conflicts"><div>YouTube Conflicts</div></a></div></div></div></div>
+            </div>
+        </div>
+
+        <div id="bs-main">
+
+            <!-- HEADER -->
+            <div id="bs-main-header">
+                <div id="bs-main-header-title">Financial Reports</div>
+                <div id="bs-main-header-menu">
+<ul>
+			<li><i id="notificationIconMenu" class="material-icons notClickable">notifications</i><span class="supZero" id="notificationNumberSign"></span></li>
+	    <li class="middle">
+        <span>crowndigitalmedia</span> <br/>
+        <span>Client Number : 139294</span>
+    </li>
+    <li id="avatarIconMenu">
+        <i class="material-icons">person</i>
+    </li>
+</ul></div>
+            </div>
+
+            <!-- ALERTS -->
+            <div id="bs-main-alert" class="bs-alert">
+                <div class="bs-alert-close"><i class="material-icons">close</i></div>
+                <div class="bs-alert-message"></div>
+            </div>
+            <div class="bs-alert bs-sub-alert">
+                <div class="bs-alert-close"><span class="glyphicon glyphicon-remove"></span></div>
+                <div class="bs-alert-message"></div>
+            </div>
+
+            <!-- CONTENT -->
+            <div id="bs-main-content-container" class="container-fluid">
+                <div class="row">
+                    <div id="bs-main-content" class="col-md-12">
+                        
+<div class="row verticalCenterBootstrapRow">
+    <div class="col-md-10">
+        <h1 id="reportPaymentMainTitle">Financial Reports</h1>
+    </div>
+    <div class="col-md-2">
+        <div class="pull-right gaEvent" data-ga-event-type="tour_to_step_1">
+            <button class="btn btn-default btn-sm" id="tourReportManager_reportmanager_56e69b893670e_startTourButton"><i class="blv-font blv-font-graduation-cap"></i> Take a tour</button>        </div>
+    </div>
+</div>
+
+
+
+<!-- LOG REPORTS HERE -->
+    <div class="row">
+        <div class="col-md-12">
+                <h5 class="text-uppercase" id="whichKindReportTitle">Generate your report</h5>
+                <div id="wizardStepGenerateReport">
+
+                    <h2 id="stepTitle_0">
+                        <span>
+                        Select the period                        </span>
+                    </h2>
+                    <section>
+                        <div class='row'>
+                            <div class='col-md-8 col-md-offset-2'>
+                                <div class='col-md-5'>
+                                    <div class="form-group">
+                                        <h5 class="text-center">FROM</h5>
+                                        <div class='input-group col-md-12' id='datetimepicker1'></div>
+                                    </div>
+                                </div>
+                                <div class='col-md-5 col-md-offset-2'>
+                                    <div class="form-group">
+                                        <h5 class="text-center">TO</h5>
+                                        <div class='input-group col-md-12' id='datetimepicker2'></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <h2 id="stepTitle_1" >
+                        <span>
+                        Report type                        </span>
+                    </h2>
+                    <section>
+                        <div class='row'>
+                            <div class='col-md-8 col-md-offset-2'>
+
+                                <div class='col-md-4 text-center gaEvent' data-ga-event-type="type_single_report">
+                                    <div data-toggle="tooltip" data-placement="left" title="Generate a single report including your full catalog or filtered on your labels, artists, releases, tracks, platforms or countries." class="like-btn like-btn-primary-outline square150 reportTypeBtn" id="useDedicatedReport">
+                                        <p class="littleTitleLikeButton">Single Report</p>
+                                    </div>
+                                </div>
+                                
+                                <div class='col-md-4 text-center gaEvent' data-ga-event-type="type_multiple_report">
+                                    <div data-toggle="tooltip" data-placement="left" title="Generate with two clicks multiple single reports split by labels, artists, releases, platforms or countries." class="multipleSquare like-btn" id="useSplitReport">
+                                        <div class="like-btn like-btn-primary-outline square150 subSquare_1 keepBtnRaw">
+                                            <div class="like-btn like-btn-primary-outline square150 subSquare_2 keepBtnRaw">
+                                                <div class="like-btn like-btn-primary-outline square150 subSquare_3">
+                                                    <p class="littleTitleLikeButton">Multiple Reports</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                        <div class='col-md-4 text-center gaEvent' data-ga-event-type="type_old_report">
+                                            <div class="legacyContainer">
+
+                                            <div data-toggle="tooltip" data-placement="left" title="The old report is still there for compatibility purposes. The old report aggregate sales per day instead of month and unit prices are all displayed instead of averaged. This result in reports that can be five times bigger than the new single and multiple reports. The old report will be phased out in the near future." class="like-btn like-btn-primary-outline square150 reportTypeBtn" id="useLegacyDedicatedReport">
+                                            <p class="littleTitleLikeButton">Old Report</p>
+                                            </div>
+
+                                            <i data-toggle="tooltip" data-placement="left" title="The old report will be discontinued soon. Please use the single and multiple reports instead." class="legacyWarningIcon material-icons">warning</i>
+
+                                            </div>
+                                        </div>
+
+                                                                
+                                <input type="hidden" id="reportType" value=""/>
+
+                                <!--DEDICATED REPORT-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="dedicatedMyReport">
+                                            <div class="form-group">
+                                                <div class="text-center">
+                                                    <label class="radio-inline dedicatedLabelForAllCatalog" >
+                                                        <input class="gaEvent" data-ga-event-type="type_full_catalog" type="radio" name="dedicatedReport" value="allCatalog" checked="checked" id="dedicatedReportAllCatalog">
+                                                        <span>Full catalog</span>
+                                                    </label>
+                                                    <label class="radio-inline dedicatedLabelForAtLeastLabel" >
+                                                        <input class="gaEvent" data-ga-event-type="type_select_labels" type="radio" name="dedicatedReport" value="atLeastLabel">
+                                                        <span>Select labels</span>
+                                                    </label>
+                                                    <label class="radio-inline" >
+                                                        <input class="gaEvent" data-ga-event-type="type_select_artists" type="radio" name="dedicatedReport" value="atLeastArtist">
+                                                        <span>Select artists</span>
+                                                    </label>
+                                                    <label class="radio-inline" >
+                                                        <input class="gaEvent" data-ga-event-type="type_select_releases" type="radio" name="dedicatedReport" value="atLeastRelease">
+                                                        <span>Select releases</span>
+                                                    </label>
+                                                    <label class="radio-inline" >
+                                                        <input class="gaEvent" data-ga-event-type="type_select_tracks" type="radio" name="dedicatedReport" value="atLeastTrack">
+                                                        <span>Select tracks</span>
+                                                    </label>
+                                                    <label class="radio-inline" >
+                                                        <input class="gaEvent" data-ga-event-type="type_select_platform" type="radio" name="dedicatedReport" value="atLeastStore">
+                                                        <span>Select platforms</span>
+                                                    </label>
+                                                    <label class="radio-inline" >
+                                                        <input class="gaEvent" data-ga-event-type="type_select_countries" type="radio" name="dedicatedReport" value="atLeastCountry" id="dedicatedReportCountry">
+                                                        <span>Select countries / regions</span>
+                                                    </label>
+                                                </div>
+                                                <div id="selectDedicatedMyReport" class="col-md-10 col-md-offset-1"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--END DEDICATED REPORT-->
+
+                                <!--SPLIT REPORT-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="splitMyReport">
+                                            <div class="form-group">
+                                                <div class="text-center">
+                                                    <label class="radio-inline splitLabelPerLabels" >
+                                                        <input class="gaEvent" data-ga-event-type="type_per_labels" type="radio" name="splitReport" value="perLabels">
+                                                        <span>Per Labels</span>
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input class="gaEvent" data-ga-event-type="type_per_artists" type="radio" name="splitReport" value="perArtists">
+                                                        <span>Per Artists</span>
+                                                    </label>
+                                                    <label class="radio-inline" >
+                                                        <input class="gaEvent" data-ga-event-type="type_per_releases" type="radio" name="splitReport" value="perReleases">
+                                                        <span>Per Releases</span>
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input class="gaEvent" data-ga-event-type="type_per_platform" type="radio" name="splitReport" value="perStores">
+                                                        <span>Per platform</span>
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input class="gaEvent" data-ga-event-type="type_per_countries" type="radio" name="splitReport" value="perCountries">
+                                                        <span>Per countries</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--END SPLIT REPORT-->
+                            </div>
+                        </div>
+                    </section>
+
+                                            <h2 id="stepTitle_2"  >
+                            <span>
+                            Columns                            </span>
+                        </h2>
+                        <section>
+                            <div class='row'>
+                                
+                                <input type="hidden" id="templateType" value="useCustomizedCsv" />
+
+                                <!--CUSTOMIZED CSV-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="customizeMyCsv">
+
+                                            <div class="row" id="handleCustomLayout">
+                                                <div class="col-md-6 text-left">
+                                                    <button id="addSelectForCsv" type="button" class="btn btn-default disabled gaEvent" data-ga-event-type="columns_add" >
+                                                        Add column                                                    </button>
+                                                </div>
+    
+                                                <div class="col-md-6 text-right">
+                                                    <button id="defaultTemplate" type="button" class="btn btn-primary gaEvent" data-ga-event-type="columns_default" >
+                                                        <i class="blv-font blv-font-undo blv-font-1x"></i>
+                                                        Default Columns                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <ul id="fieldSectionToCustomizeCsv"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--END CUSTOMIZED CSV-->
+                            </div>
+                        </section>
+
+                    
+                    <h2 id="stepTitle_3">
+                        Generate                    </h2>
+                    <section>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5><strong class="text-uppercase">Selected Period : </strong></h5>
+                                <div id="summaryPeriod"></div>
+
+                                <h5><strong class="text-uppercase">Selected report : </strong></h5>
+                                <div id="summaryReport"></div>
+
+                                <h5><strong class="text-uppercase">Selected columns : </strong></h5>
+                                <div id="summaryCustom"></div>
+
+                            </div>
+                        </div>
+
+                    </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+        <h5 class="text-uppercase" id="availableReportTitle">Available Reports</h5>
+        <div id="availableReport">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active gaEvent" data-ga-event-type="monthly_tab">
+                    <a href="#monthlyGeneratedReports" aria-controls="monthlyGeneratedReports" role="tab" data-toggle="tab">Monthly generated reports</a>
+                </li>
+                <li role="presentation" class="gaEvent" data-ga-event-type="requested_tab">
+                    <a id="hrefToRequestedReports" href="#requestedReports" aria-controls="requestedReports" role="tab" data-toggle="tab">Requested reports</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane" id="requestedReports"></div>
+            </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane" id="monthlyGeneratedReports"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+        
+
+
+<!-- EMPTY MODALS-->
+
+<!-- overview details-->
+<div class="modal fade" id="totalOverviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modalVerticalAlignHelper">
+        <div class="modal-dialog modalVerticalCenter">
+            <div class="modal-content">
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- carousel modal -->
+<div class="modal fade" id="carousel-modal" role="dialog">
+    <div class="modal-dialog" role="document">
+
+        <div id="preview-carousel" class="carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#preview-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#preview-carousel" data-slide-to="1"></li>
+                <li data-target="#preview-carousel" data-slide-to="2"></li>
+                <li data-target="#preview-carousel" data-slide-to="3"></li>
+                <li data-target="#preview-carousel" data-slide-to="4"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active" carousel-order=1>
+                    <div class="card">
+                        <div class="card-header preview-1"></div>
+                        <div class="card-text">
+                            <h1>Your Financial Reports Tool has improved !</h1>
+                            <p>New functionalities and a better user experience awaits you in the improved Financial Reports tool. Click next to discover what's new.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-caption"></div>
+                </div>
+                <div class="item card" carousel-order=2>
+                    <div class="card">
+                        <div class="card-header preview-2"></div>
+                        <div class="card-text">
+                            <h1>Generate your latest financial report in one click.</h1>
+                            <p>Every time a new report appears in your backstage, log into your Financial Reports tool and generate it instantly in just one click.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-caption"></div>
+                </div>
+                <div class="item card" carousel-order=3>
+                    <div class="card">
+                        <div class="card-header preview-3"></div>
+                        <div class="card-text">
+                            <h1>A better management of your report type and columns.</h1>
+                            <p>Easily choose any report type wether it's a single report or multiple reports gathered in one single zip file. Choose your report columns or use the standard set of columns.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-caption"></div>
+                </div>
+                <div class="item card" carousel-order=4>
+                    <div class="card">
+                        <div class="card-header preview-4"></div>
+                        <div class="card-text">
+                            <h1>Your financial reports are now leaner</h1>
+                            <p>The new reports are smaller and easier to open. In somes cases, the new reports contain 80% less rows than the old one while keeping all the relevant data.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-caption"></div>
+                </div>
+                <div class="item card" carousel-order=5>
+                    <div class="card">
+                        <div class="card-header preview-5"></div>
+                        <div class="card-text">
+                            <h1>The old report is still there</h1>
+                            <p>For those of you who rely on the old report format with more rows, it’s still there.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-caption"></div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control hidden" href="#preview-carousel" role="button" data-slide="prev">
+                <i class="material-icons">keyboard_arrow_left</i>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#preview-carousel" role="button" data-slide="next">
+                <i class="material-icons">keyboard_arrow_right</i>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+</div>                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+        
+<script type="text/javascript">
+if(typeof(fw_loaded_plugins) == "undefined") var fw_loaded_plugins = {};
+</script>
+
+<script  type="text/javascript" src="//static.believedigital.com/frameworks/jqueryui/default/jquery-ui.min.js?assetVersion=1.144.4" plugin-data="jqueryui" file-checksum="fb253d200ac0fb6ec745610d4c12e0d5"></script>
+<script  type="text/javascript" src="//static.believedigital.com/plugins/other/bootstrap-tour/default/js/bootstrap-tour.min.js?assetVersion=1.144.4" plugin-data="bootstraptour" file-checksum="0ceb991b955341a58b7813c4a94da73f"></script>
+
+<script type="text/javascript">
+var gaEventsFile = "\/\/static.believedigital.com\/local\/backstage\/views\/royalties\/js\/gaReportmanager.json";
+var clientLanguage = "en";
+if(typeof(fw_launched_doms) == "undefined")  var fw_launched_doms = {};
+if(typeof(fw_loaded_files) == "undefined")   var fw_loaded_files = {};
+</script>
+
+<script  type="text/javascript" src="//static.believedigital.com/plugins/believe/blvsteps/default/js/blvsteps.js?assetVersion=1.144.4" plugin-data="blvsteps" file-checksum="ba8c79c9e1eaa2abccf13305785d5126"></script>
+<script  type="text/javascript" src="//static.believedigital.com/frameworks/bootstrap3/default/js/bootstrap.min.js?assetVersion=1.144.4" plugin-data="bootstrap3" file-checksum="9f275be3de42bf5ca4797fb904d713a5"></script>
+<script  type="text/javascript" src="//static.believedigital.com/plugins/other/bootstrap-datepicker/default/js/bootstrap-datepicker.min.js?assetVersion=1.144.4" plugin-data="bootstrapdatepicker" file-checksum="36bd1ae5f0a9b112797905161c643f9d"></script>
+<script  type="text/javascript" src="//static.believedigital.com/plugins/other/bootstrap-datepicker/default/js/handlePluginDatepicker.js?assetVersion=1.144.4" plugin-data="bootstrapdatepicker" file-checksum="0637fcf464b249ac61a18a4415174aea"></script>
+<script  type="text/javascript" src="//static.believedigital.com/plugins/other/bootstrap-confirmation/default/bootstrap-confirmation.js?assetVersion=1.144.4" plugin-data="confirmation" file-checksum="9aff7b62496231c2f1dd12628b62cc86"></script>
+<script  type="text/javascript" src="//static.believedigital.com/plugins/other/jquery-select2/default/js/select2.min.js?assetVersion=1.144.4" plugin-data="select2" file-checksum="91f1469f170b4a0d04c41afa02741377"></script>
+
+<script type="text/javascript">
+var VAR_LANG_REPORT_MANAGER = $.extend(typeof(VAR_LANG_REPORT_MANAGER) == "undefined" ? {} : VAR_LANG_REPORT_MANAGER, {"ONE_CLICK_REPORT_POPIN_CONTENT_QUARTER":"It includes all sales reported by the platforms during the #QUARTER_PERIOD# quarter of #DATE_YEAR#","ONE_CLICK_REPORT_POPIN_CONTENT_MONTH":"It includes all sales reported by the platforms during #DATE_MONTH# #DATE_YEAR#","ONE_CLICK_REPORT_POPIN_HEADER":"A new financial report is available","LEGACY_DEDICATED_REQUEST_BUTTON_EXPLANATION_TEXT":"The old report is still there for compatibility purposes. The old report aggregate sales per day instead of month and unit prices are all displayed instead of averaged. This result in reports that can be five times bigger than the new single and multiple reports. The old report will be phased out in the near future.","UNIQUE_REPORT_BUTTON_TEXT":"Single Report","LEGACY_UNIQUE_REPORT_BUTTON_TEXT":"Old Report","LEGACY_DEDICATED_LABEL":"Legacy label advanced report","LEGACY_DEDICATED_ARTIST":"Legacy artist advanced report","LEGACY_DEDICATED_ALBUM":"Legacy album advanced report","LEGACY_DEDICATED_SONG":"Legacy song advanced report","LEGACY_DEDICATED_STORE":"Legacy store advanced report","LEGACY_DEDICATED_COUNTRY":"Legacy country advanced report","UNIQUE_REPORT_EXPLANATION_TEXT":"Lorem Ipsum UNIQUE","MULTIPLE_REPORT_EXPLANATION_TEXT":"Lorem Ipsum MULTIPLE","GENERATE_THIS_REPORT_TEXT":"Generate this report","UNIQUE_REPORT_ALL_CATALOG":"Full catalog single report","MULTIPLE_REPORT_BUTTON_TEXT":"Multiple Reports","DEFAULT_COLUMNS_TEXT":"Default Columns","GLOBAL_TOUR_STEP_FULL_CATALOG_RADIO_BUTTON":"You can include your full catalog in your single report.","GLOBAL_TOUR_STEP_SINGLE_CHOOSE_LABELS_RADIO_BUTTON":"You can filter the single report on one or multiple labels, artists, releases, tracks, platforms or countries from your catalog.","GLOBAL_TOUR_STEP_MULTIPLE_PER_LABELS_RADIO_BUTTON":"You can choose to split your multiple reports per labels, artists, releases, platforms or countries.","GLOBAL_TOUR_STEP_DEFAULT_COLUMNS_BUTTON":"Click on \"Default Columns\" to get back to the standard set of columns.<br><br>Standard columns contains the most relevant info about your catalog and your sales.","REPORT_MANAGER_ONBOARDING_TITLE_SLIDE_1":"Your Financial Reports Tool has improved !","REPORT_MANAGER_ONBOARDING_BODY_SLIDE_1":"New functionalities and a better user experience awaits you in the improved Financial Reports tool. Click next to discover what's new.","REPORT_MANAGER_ONBOARDING_TITLE_SLIDE_2":"Generate your latest financial report in one click.","REPORT_MANAGER_ONBOARDING_BODY_SLIDE_2":"Every time a new report appears in your backstage, log into your Financial Reports tool and generate it instantly in just one click.","REPORT_MANAGER_ONBOARDING_TITLE_SLIDE_3":"A better management of your report type and columns.","REPORT_MANAGER_ONBOARDING_BODY_SLIDE_3":"Easily choose any report type wether it's a single report or multiple reports gathered in one single zip file. Choose your report columns or use the standard set of columns.","REPORT_MANAGER_ONBOARDING_TITLE_SLIDE_4":"Your financial reports are now leaner","REPORT_MANAGER_ONBOARDING_BODY_SLIDE_4":"The new reports are smaller and easier to open. In somes cases, the new reports contain 80% less rows than the old one while keeping all the relevant data.","REPORT_MANAGER_ONBOARDING_TITLE_SLIDE_5":"The old report is still there","REPORT_MANAGER_ONBOARDING_BODY_SLIDE_5":"For those of you who rely on the old report format with more rows, it\u2019s still there.","OLD_REPORT_DISCONTINUATED_SOON_TEXT":"The old report will be discontinued soon. Please use the single and multiple reports instead."});
+var VAR_LANG_REPORT_MANAGER = $.extend(typeof(VAR_LANG_REPORT_MANAGER) == "undefined" ? {} : VAR_LANG_REPORT_MANAGER, []);
+var VAR_LANG_STATEMENT_DETAILS = $.extend(typeof(VAR_LANG_STATEMENT_DETAILS) == "undefined" ? {} : VAR_LANG_STATEMENT_DETAILS, {"SD_LMIT_BY_LABEL":"Limit View By Label","SD_LIMIT_BY_ARTIST":"View data by artist","SD_RETAILERNAME":"Music store","SD_COUNTRY":"Territories","SD_ARTIST":"Artist","SD_TITLE":"Title","SD_PHYSICAL_UPC":"UPC \/ ISRC","SD_TYPE":"Type Of Sale","SD_QUANTITY":"Quantity","SD_PRICE":"Price","SD_DRM":"Mechanicals","SD_TOTAL":"Total","SD_GENERAL_INFOS":"General information","SD_PRODUCER":"Producer","SD_ROY_RATE":"Royalty Rate","SD_OVERVIEW2":"Royalty Overview","SD_PAYABLE":"Total Payable","SD_ROY":"Royalties","SD_TOTAL_SALES":"Total Sales","SD_HELP_TITLE":"General information","SD_NO_ROYALTIES":"No royalties","SD_ALL_LABEL":"All labels","SD_ALL_ARTIST":"All artists","SD_MAKE_OTHER_SEARCH":"Make another search","SD_SEARCH_TITLE":"Search Options","DMS":"Music store","SD_PREVIOUS_PAGE":"Previous Page","SD_NEXT_PAGE":"Next Page","SD_DOWNLOADDATE":"Download date","SD_FROM_DATE":"From","SD_TO_DATE":"To","SD_PAGE_TITLE":"Details of my royalties","SD_WARNING_TITLE":"PLEASE NOTE","SD_MAIN_EXPLAIN":"Online services send us statements either monthly or quarterly. We integrate them in our royalties analysis tool as and when they arrive, using the transaction dates provided. Therefore for some services like Beatport, transactions might appear on one month but represent a quarter worth of sales. For instance, eMusic supplies us with royalty statements for January\/February\/March, in April. Cumulated sales will not be spread across the quarter, but will all appear as part of March.<br \/>\nNB : The total amount in the 'royalty analysis' and 'royalty details' sections often differ slightly, as the amounts are rounded up.","SD_IMPORT_DATE":"Date of import File","CSV_NEW_REPORTING_MONTH":"Reporting month","CSV_NEW_OPERATION_MONTH":"Sales Month","CSV_NEW_DMS":"Platform","CSV_NEW_COUNTRY":"Country \/ Region","CSV_NEW_ACCOUNT":"Account","CSV_NEW_LABEL":"Label Name","CSV_NEW_ARTIST":"Artist Name","CSV_NEW_ALBUM":"Release title","CSV_NEW_TRACK":"Track title","CSV_NEW_UPC":"UPC","CSV_NEW_UPC_BELIEVE":"Delivered UPC","CSV_NEW_ISRC":"ISRC","CSV_NEW_ISRC_BELIEVE":"Delivered ISRC","CSV_NEW_REF_CAT":"Release Catalog nb","CSV_NEW_DROITS_VOISINS":"Product","CSV_NEW_TYPE":"Sales Type","CSV_NEW_QTY":"Quantity","CSV_NEW_PRICE":"Unit Price","CSV_NEW_DRM":"Mechanical Fee","CSV_NEW_TOTAL":"Gross Revenue","CSV_NEW_RATE":"Client share rate","CSV_NEW_TOTAL_ACCOUNT":"Net Revenue","POP_UP_NEW_INTRO_TEXT":"Dear partner,<br \/><br \/>Here is the total amount of royalties credited on your account (<b><i>%s<\/i><\/b>) regarding the selected filters:","POP_UP_NEW_END_TEXT":"Please don't hesitate to contact us at royalties@believedigital.com.<br \/><br \/>Very best regards,<br \/>Royalty Accounting Team<br \/><br \/><b>Believe Digital<\/b>","TEXT_FOR_VIEW_POP_UP":"Total","POP_UP_PRINT":"Print","POP_UP_DOWNLOAD":"Download","CSV_NEW_P_LINE":"P Line","CSV_NEW_SOCIETIES":"Society","POP_UP_NR_INTRO_TEXT":"Dear partner,<br \/><br \/>Here is the total amount of your Neighbouring rights credited on your account (<b><i>%s<\/i><\/b>) regarding the selected filters:","CSV_NEW_CURRENCY":"Client Payment Currency","CSV_NEW_ASSET_TYPE":"Release type","CSV_ASSET_TYPE_VIDEO_COVER":"Packshot video","CSV_ASSET_TYPE_VIDEO_WEB":"Music Video","CSV_ASSET_TYPE_VIDEO_PLAY":"Entertainment Video","CSV_ASSET_TYPE_ALBUM":"Music release","CSV_ASSET_TYPE_ALBUM_CLASSIC":"Classical Music release","CSV_ASSET_TYPE_COMPILATION":"Music compilation","CSV_ASSET_TYPE_RINGTONE":"iTunes ringtones","CSV_NEW_INFO":"In order to improve the quality of information, please note that a new CSV Royalty Reports is now available.","CSV_ALBUM_SECTION":"Album","CSV_ROYALTIES_SECTION":"Revenue","CSV_SONG_SECTION":"Song","CSV_PRODUCER_SECTION":"Producer","CSV_ARTIST_SECTION":"Artist","CSV_LABEL_SECTION":"Label","CSV_DMS_SECTION":"Store","CSV_P_LINE_ALBUM":"Release Producer","CSV_SNG_PLINE":"Track Producer","CSV_CUSTOM_REPORT_ADD_CLMNS":"Select Items","CSV_BLANK":"Blank column","CSV_CUSTOM_SAVED":"Your Report is now customized","CSV_CUSTOM_MSG_ERROR":"You have to choose at least one field to display","CSV_CUSTOMIZE_CSV":"Customize your CSV report","CSV_CUSTOM_SAVE":"Save","CSV_CUSTOM_FINAL":"Final CSV report","CSV_NEW_OFFERTYPE":"Streaming Subscription Type","CSV_NEW_REF_TCN":"Track Catalog nb","MAINTENANCE_ROYALTIES":"Dear partners,<br \/><br \/>\nIn order to optimize your backstage, the access to your reports is currently under maintenance.<br \/><br \/>\nWe are scheduled to complete the maintenance operations until February 4th, following which you will be able to log on onto your backstage as usual<br \/><br \/>\nBe assured that this operation has no impact on the royalties payments due on February,4th and 15th<br \/><br\/>\nThank you for your understanding and ongoing support.<br \/>\t<br \/>\nThe Royalty Department","DELETE_REQUEST_CONFIRM":"Are you sure you want to delete this report?","DELETE_REPORT":"delete report","CANCEL":"cancel","STATEMENT_ERROR_YT":"Dear Partner,\n\nDue to a technical issue during the initial upload of Youtube Official Music royalties of November, we had to reprocess these royalties one month later.\n\nThis means your November statement will not display any Youtube Official Music royalties, whereas your December report will display both November and December Youtube Official Music royalties. You can still differentiate them using filter on column B of your statement\nRoyalties amount displayed in the balance for Q4 2014 are updated accordingly.\n\nNew controls are in place to avoid this issue to happen again\n\nThanks and apologies for inconvenience caused\n\nThe Believe Digital team","CSV_LABEL_RATE":"Label rate","CSV_TOTAL_LABEL":"Total label","CSV_NEW_SOCIETY":"Society","CSV_NEW_REPORTING_ACCOUNTING_DATE":"Accounting Date","CSV_NEW_OPERATION_YEAR":"Year of Operation","CSV_NEW_COLLECTING_SOCIETY":"Collecting Society","BELIEVE_USER_NO_ACCESS":"You can not access this tool for the moment.\nTechnical Team.","STATEMENT_REQUEST_DO_ASYNC":"Your asked a request with more of %d lines.<br\/>\nIt will be treated in delayed, under 24 hours and a download link will be send by email.<br\/>\n<br\/>\nThanks","STATEMENT_REQUEST_BIG_QUERY":"Your request can not be completed because of a too high number of line. Please reduce the scope of your request, or contact the royalties service.","STATEMENT_REQUEST_DO_ASYNC_MAIL":"Dear partner, <\/br> \nYour request is ready. <br\/> \nThis is the download link : %s <br\/>\n<br\/>\nBelieve Backstage","CSV_NEW_ALBUM_AV_TRAD":"Albums","CSV_RIGHTS_TYPE":"Rights Type","MN_ASK_PAYMENT_FOR_VISITOR":"Reporting","MN_RIGHTS":"Neighbouring Rights","CSV_NEW_SOURCE":"Source","CSV_NEW_SOCIETY_OPERATION_MONTH":"Society Reporting Month","CSV_SECTOR_OF_RIGHTS":"Sector of Rights","CSV_CATALOG_SECTION":"Catalog","POP_UP_NEW_END_TEXT_MUSICAST":"Please don't hesitate to contact your product manager<br \/><br \/>Very best regards,<br \/>Royalty Accounting Team<br \/><br \/><b>Musicast<\/b>","CSV_NEW_OPERATION_DATE":"Sales Month","CSV_NEW_REPORTING_MONTH_LEGACY":"Reporting month","CSV_NEW_OPERATION_MONTH_LEGACY":"Months of Operation","CSV_NEW_DMS_LEGACY":"Store","CSV_NEW_COUNTRY_LEGACY":"Country","CSV_NEW_ACCOUNT_LEGACY":"Account","CSV_NEW_LABEL_LEGACY":"Label","CSV_NEW_ARTIST_LEGACY":"Artist","CSV_NEW_ALBUM_LEGACY":"Album","CSV_NEW_TRACK_LEGACY":"Track","CSV_NEW_UPC_LEGACY":"UPC","CSV_NEW_ISRC_LEGACY":"ISRC","CSV_NEW_REF_CAT_LEGACY":"Catalogue #","CSV_NEW_ASSET_TYPE_LEGACY":"Assets","CSV_NEW_TYPE_LEGACY":"Type","CSV_NEW_OFFERTYPE_LEGACY":"Offer Type","CSV_NEW_QTY_LEGACY":"Quantity","CSV_NEW_CURRENCY_LEGACY":"Currency","CSV_NEW_PRICE_LEGACY":"Price","CSV_NEW_DRM_LEGACY":"Mechanicals (US...)","CSV_NEW_TOTAL_LEGACY":"Total","CSV_BLANK_LEGACY":"Blank","CSV_NEW_RATE_LEGACY":"Royalty rate","CSV_NEW_TOTAL_ACCOUNT_LEGACY":"Account total","CSV_NEW_ISRC_BELIEVE_LEGACY":"Display ISRC","CSV_NEW_REF_TCN_LEGACY":"Track catalogue #","CSV_NEW_UPC_BELIEVE_LEGACY":"Display UPC","CSV_P_LINE_ALBUM_LEGACY":"Album P Line","CSV_SNG_PLINE_LEGACY":"Song P Line","CSV_NEW_OPERATION_DATE_LEGACY":"Date of Operation","STATEMENT_FOOTER_CONTACT_TEXT":"Please don't hesitate to contact us at #MAIL_ADDRESS#.\n\nVery best regards,\nRoyalty Accounting Team\n\n<b>#SIGNATURE_NAME#<\/b>","CSV_WITHHOLDING_AMOUNT":"Withholding Tax"});
+var VAR_LANG_STATEMENT_DETAILS = $.extend(typeof(VAR_LANG_STATEMENT_DETAILS) == "undefined" ? {} : VAR_LANG_STATEMENT_DETAILS, []);
+var VAR_LANG_GLOBALS = $.extend(typeof(VAR_LANG_GLOBALS) == "undefined" ? {} : VAR_LANG_GLOBALS, {"ARTIST":"Artist","TOTAL_SUPPORT":"Total supports","LABEL":"Label","EXPL_LYRICS":"Explicit Lyrics","TOTAL_TRACK":"Total Track","SALE_TYPE":"Sale Type","CLINE":"CLine","PLINE":"PLine","TERRITORIAL_RESTRICTIONS":"Territorial restrictions","PAGE_TITLE":"Believe - Personal Area","GLOBAL_ACTION":"Actions","GLOBAL_TRACK_NUMBER":"Track Number","GLOBAL_TRACK_NUMBER2":"Track Number","GLOBAL_ISRC":"ISRC","GLOBAL_DURATION":"Duration","GLOBAL_ARTIST":"Artist","GLOBAL_TITLE":"Title","GLOBAL_FEATURING":"Featuring","GLOBAL_VERSION":"Version","GLOBAL_GENRE":"Genre","GLOBAL_CD":"CD","GLOBAL_CLOSE":"Close","GLOBAL_INFOBOX_TITLE":"Information :","GLOBAL_ERRORBOX_TITLE":"Error Found :","GLOBAL_UPC":"UPC","GLOBAL_NO_ALBUM_TEXT":"Your player will be available after 48 hours.","ACTION_PLEASE_WAIT":"Please wait. Your request is being processed.","YES":"Yes","NO":"No","BLACK":"Black","WHITE":"White","GRAY":"Gray","GREEN":"Green","ORANGE":"Orange","PINK":"Pink","RED":"Red","BLUE":"Blue","SAND":"Sand","PRICE_EP":"Single \/ EP","PRICE_BUDGET":"BUDGET","PRICE_BACKCATALOG":"Back Catalogue","PRICE_MIDFRONT":"MIDFRONT","PRICE_PREMIUM":"PREMIUM","PRICEEP_VALUE":"from 0.99&euro; to 3.99&euro;","MN_CATALOG":"Manage Your Releases","MN_ALBUM_CREATE":"Create a New Release","MN_PENDING_ALBUMS":"Pending releases","MN_VERIFICATION_ALBUMS":"%d Albums Waiting For Verification","MN_CHECKOUT_ALBUMS":"<div style=\"background-color:#F6F6F6;padding:2px 5px 5px 10px;margin:15px 10px 5px 0px;font-size:18px;border:1px solid #C3C3C3;text-align:left\" class=\"roundBox5\"><div style=\"background:url(img\/shoppingCart32.png) no-repeat bottom left;width:149px;height:40px;\">\r\n<div style=\"%s;font-size:12px;text-align:center;color:white;height:20px;\">%d<\/div>\r\n<div style=\"position:relative;width:70px;top:-10px;left:55px\">Cart<\/div> <\/div><\/div>","MN_MY_CATALOG":"View Your Releases","MN_GLOBAL_CATALOG":"Releases Global Overview","MN_PROMOTE_CATALOG":"Promote Your Releases","MN_CREATE_PLAYERS":"Your Players","MN_USE_LINKS":"Your Direct Links","MN_MYSPACE_SIGNATURES":"Your MySpace\u00ae Signatures","MN_PLAYER_STATISTICS":"Player Statistics","MN_ROYALTIES_REPORTING":"View Your Sales","MN_ASK_PAYMENT":"Payment History","MN_STATEMENTS_AVAILABILITY":"Statements Availability","MN_ROYALTIES_QUARTER_REPORT":"Your Royalty Statements","MN_ROYALTIES_SEARCH":"Monthly Sales","MN_ROYALTIES_REALTIME":"iTunes\u00ae Realtime!","MN_TOOLS":"Edit Your Account","MN_BANK_ACCOUNT":"Bank Account Parameters","MN_PASSWORD":"Change Your Password","MN_LOGOUT":"Logout","MN_DELIVERY_OVERVIEW":"Delivery Overview","MN_PROFILE":"Edit Your Profile","MN_ALBUM_INFORMATION":"Release Information","MNT_HOME":"Home","MNT_FAQ":"FAQ","MNT_CONTACT_US":"Contact Us","MNT_PROFILE":"My Profile (%s)","MNT_LOGOUT":"Logout","TB_DETAILS":"Details","TB_PLAYER":"Player","TB_NEWS":"News","TB_BIOGRAPHY":"Biography","TB_PHOTOS":"Photos","TB_VIDEOS":"Videos","TB_SIGNATURE":"Signature","MN_LEGALS":"Terms & Conditions","MN_GET_ROYALTIES":"Get Your Royalties","PAGE_FOOTER":"\u00a9 <a href=\"http:\/\/www.believedigital.com\" target=\"_blank\">Believe Digital 2005-%s<\/a> - All rights reserved","TAB_PLAYER_HOME":"Player Home","TAB_NEWS":"News","TAB_BIO":"Bio","TAB_VIDEO":"Videos","TAB_RETAIL_LINK":"Retail Links","MN_MY_ORDERS":"Order History","MN_GET_CONTRACT":"View Your Contract","GLOBAL_FIELD_REQUIRED":"This field is required","MN_SPPF":"Neighbouring rights","MN_SPPF_DECLARATION":"Declare your physical sales (France only)","MN_DOWNLOADS_CARDS":"Download Cards","MN_COMMERCIAL_DESCRIPTION":"<span style='%s'>%d Commercial Description<\/span>","TAB_PHOTO":"Photos","TAB_INTERVIEW":"Interviews","TAB_MYSPACE_SIGNATURE":"Myspace Signature","MP_DEFAULT_LANGUAGE":"Default Language","MN_IMPORT_XLS_FILES":"Create releases with Excel","GLOBAL_CD_TRACK":"CD \/ Track","GLOBAL_AUTHOR":"Author","GLOBAL_COMPOSER":"Composer","GLOBAL_DIGIT_RELEASE_DATE":"Digital release date","GLOBAL_PHYSICAL_RELEASE_DATE":"Physical release date","GLOBAL_NO_VERSION":"No version","MN_CUMULATED_SALES":"Cumulated Sales in France (SPPF\/SCPP)","MN_ECRM_GROUP":"Believe Connect","MN_ECRM_IMPORT":"Import contacts","MN_ECRM_CONTACTS":"Contacts","MN_ARTIST_ACCESS":"Create User Access","MN_STATEMENT_STATISTIC_OVERVIEW":"Royalty Overview","MN_ECRM_CONFIRM":"Confirm your contacts","MN_ECRM_NEWSLETTERS":"Manage newsletters","MN_ECRM_NEWSLETTER_STATS":"Believe Connect Statistics","MN_ECRM_HOME":"Get started!","TAB_SOCIAL_NETWORK":"Social networks","TAB_CONCERT":"Concerts","MN_BALANCE":"Balance","MN_PLAYER_FA":"Facebook Player","MN_PLAYER_MY":"MySpace Player","MN_PLAYER_SEL":"Embeddable Player","MN_ARTISTS_PROFILE":"BelieveBand","MN_AUDIO_PROBLEMS":"<span style=\"%s\">%s Releases to be modified<\/span>","MN_ROYALTIES_FAQ":"FAQ","MN_COMPIL_CREATE":"create a compilation","MN_ACCESS_ALBUM_PENDING":"<span style='%s'>%d Users account releases<\/span>","MN_WIDGET_EMAIL":"Email Grabber","MN_SITE_ARTISTS":"Zimbalam Artist Website","MN_ALBUM_TO_CORRECT":"Releases to be corrected","MN_DSP_DISTRIBUTION_NETWORK":"My Distibution Network","MN_DSP_BULK_DELIVERIES":"My Bulk Deliveries","MN_DSP_CREATE_PLATFORM":"Upload a Contract","MN_DSP_MENU":"Dsp","MN_DSP_XML_IMPORT":"XML Import","MN_MANAGE_LABELS":"Manage my labels","MN_RECOMMANDED_RINGTONES":"<span style='%s'>%d Recommended Ringtones<\/span>","GLOBAL_MONTH":"Month","GLOBAL_CHOOSE":"- Please choose -","GLOBAL_YEAR":"Year","GLOBAL_QUARTER":"Quarter","MN_AUTODELIVERY_STATUS_ON":"Auto deliveries activated","MN_AUTODELIVERY_STATUS_OFF":"Auto deliveries disabled","MN_AUTODELIVERY_CHANGE_ON":"Activate the auto deliveries","MN_AUTODELIVERY_CHANGE_OFF":"Disable the auto deliveries","MN_AUTODELIVERY_CLICK":"click to change the automatic mode","GLOBAL_VAT_PARAMS_SAVED":"Your VAT information are properly recorded","GLOBAL_CONTACT_LEGADMIN":"For more information, contact legal admin at  <a href=\"mailto:royalties@believedigital.com\">royalties@believedigital.com<\/a>","GLOBALS_TOP":"Top","GLOBALS_WORLD":"World","GLOBALS_EXCEPT":"except","GLOBAL_SELECT":"Please select a value","GLOBAL_DELETE":"Delete","GLOBAL_INCORRECT":"Please enter a correct value","MN_STATEMENT_ROYALTIES_OVERVIEW":"Sales and Trend Overview (Estimate)","GLOBAL_FAQ_TITLE":"FAQ - Frequently Asked Questions","GLOBAL_MAINTENANCE_TITLE":"Maintenance","GLOBAL_MAINTENANCE_TEXT":"Dear partners,<br \/>\nIn order to optimize your backstage, this page is currently under maintenance.<br \/>\nThank you for your understanding and ongoing support.","MY_MUSICAST_TITLE":"My Musicast","STORE_INGESTION_HISTORY_TEXT":"Store ingestion history","CANCEL_TEXT":"Close","MISSING_REPORTS_TEXT":"Missing report(s) :","GLOBAL_STORE_TEXT":"Stores","GLOBAL_ALL_DATA_INGESTED_TEXT":"Data had been ingested","GLOBAL_NO_DATA_INGESTED_TEXT":"No data had been ingested","GLOBAL_PARTIALLY_INGESTED_DATA_TEXT":"Data had been partially ingested","GLOBAL_ALL_TEXT":"All","GLOBAL_TERRITORIES_TEXT":"Territories","GLOBAL_SELECT_TERRITORIES_TEXT":"Select territories","GLOBAL_VALIDATE":"Validate","WORK_IN_PROGRESS_WAIT":"Work in progress. Please wait...","GLOBAL_TERRITORY_TEXT":"Territory","GLOBAL_LABEL":"Label","GLOBAL_TYPE":"Type","GLOBAL_VIDEO":"Video","GLOBAL_MUSICAL_OUTPUT":"Music Release","GLOBAL_PLEASE_WAIT":"Please wait...","GLOBAL_NO_DATA":"No Data","GLOBAL_TOTAL":"Total","CURRENCY_RUB":"RUB","GLOBAL_RINGTONE":"Ringtone","GLOBAL_ERROR_OCCURRED":"An error has occurred","GLOBAL_ADJECTIVE_NUMERIC_1":"first","GLOBAL_ADJECTIVE_NUMERIC_2":"second","GLOBAL_ADJECTIVE_NUMERIC_3":"third","GLOBAL_ADJECTIVE_NUMERIC_4":"fourth","GLOBAL_REMIND_ME_LATER_TEXT":"Remind me later","GLOBAL_ALL_CATALOG_TEXT":"Full catalog","GLOBAL_UNAUTHORIZED_ACCESS":"Unauthorized access","GLOBAL_SUCCESS_TEXT":"Success","INPUT_NO_MATCHES_FOUND_TEXT":"No matches found","INPUT_SEARCHING_TEXT":"Searching","INPUT_TOO_SHORT_TEXT":"Please enter %number% or more characters","VOLUME_TEXT":"Vol","BACK_TEXT":"Back"});
+var VAR_LANG_GLOBALS = $.extend(typeof(VAR_LANG_GLOBALS) == "undefined" ? {} : VAR_LANG_GLOBALS, []);
+var VAR_LANG_LANG_COMMON = $.extend(typeof(VAR_LANG_LANG_COMMON) == "undefined" ? {} : VAR_LANG_LANG_COMMON, {"COMMON_ARTIST_NAME":"Artist name","COMMON_ARTIST":"Artist","COMMON_RELEASE":"Release","COMMON_RELEASES":"Releases","COMMON_TRACK":"Track","COMMON_TRACKS":"Tracks","COMMON_RELEASE_TITLE":"Release title","COMMON_TRACK_TITLE":"Track title","COMMON_UPC":"UPC","COMMON_ISRC":"ISRC","COMMON_GRID":"Grid","COMMON_VERSION":"Version","COMMON_LABEL":"Label","COMMON_LABELS":"Labels","COMMON_LABEL_NAME":"Label name","COMMON_GENRE":"Genre","COMMON_PRODUCTION_YEAR":"Production Year","COMMON_COMPOSER":"Composer","COMMON_AUTHOR":"author","COMMON_TRACK_NUMBER":"Track Number","COMMON_NUMBER_OF_TRACKS":"Track Number","COMMON_VOLUME":"Volume","COMMON_TERRITORIES":"Territories","COMMON_STORES":"Stores","COMMON_DIGITAL_RELEASE_DATE":"Digital release date","COMMON_PHYSICAL_RELEASE_DATE":"Physical release date","COMMON_RELEASE_DATE":"Release Date","COMMON_VALIDATION_DATE":"Validation Date","COMMON_CREATION_DATE":"Creation Date","COMMON_FEATURING":"featuring","COMMON_ALL_LABELS":"All labels","COMMON_ALL_ARTISTS":"All artists","COMMON_ALL_RELEASES":"All releases","COMMON_CATALOG_NUMBER":"Catalog Number","COMMON_C_LINE":"\u00a9 line","COMMON_P_LINE":"&#8471; line","COMMON_PRICE_TIER":"Price tier","COMMON_ARTISTS":"Artists","COMMON_CONTENT_ID":"Content ID on YouTube (Matching copies)","COMMON_REF_MATCH_POLICY":"Monetize or Block copies on YouTube","COMMON_TRACK_GRID":"Track Grid","COMMON_DESCRIPTION":"Description","COMMON_PROMOTION":"Promotion","COMMON_EXCLUSIVE_DATE":"Exclusive release date","COMMON_EXPLICIT_CONTENT":"Explicit content","COMMON_REF_MATCH_POLICY_BLOCK":"Block","COMMON_REF_MATCH_POLICY_MONETIZE":"Monetize","COMMON_PREORDER":"Preorder","COMMON_IGT":"Instant Gratification Track","COMMON_IGT_NB":"IGT #","COMMON_AUDIO_QUALITY":"Audio quality","COMMON_STORE":"Store","COMMON_PHYSICAL_ISRC":"ISRC","COMMON_PHYSICAL_UPC":"Physical UPC","COMMON_SELECT":"Select","COMMON_GENERATE":"Generate","COMMON_SCOPE":"Selected Period","COMMON_REPORT":"Selected report","COMMON_CUSTOM":"Selected columns","COMMON_PRODUCT_SYNTHESIS":"Product synthesis","COMMON_OVERVIEW":"Overview","COMMON_EXPLICIT_LYRICS":"Explicit Lyrics","COMMON_ROLE":"Role","COMMON_INSTRUMENT":"Instrument","COMMON_CONTRIBUTOR":"Contributor Name","COMMON_SECONDARY_GENRE":"Secondary Genre"});
+var VAR_LANG_LANG_COMMON = $.extend(typeof(VAR_LANG_LANG_COMMON) == "undefined" ? {} : VAR_LANG_LANG_COMMON, {"COMMON_RELEASE_TITLE":"Release title"});
+var VAR_LANG_LANG_DATE = $.extend(typeof(VAR_LANG_LANG_DATE) == "undefined" ? {} : VAR_LANG_LANG_DATE, {"DATE_DAY_1":"Monday","DATE_MONTH_1_SHORT":"Jan","DATE_MONTH_1":"January","DATE_MONTH_10":"October","DATE_MONTH_11":"November","DATE_MONTH_12":"December","DATE_MONTH_2":"February","DATE_MONTH_3":"March","DATE_MONTH_4":"April","DATE_MONTH_5":"May","DATE_MONTH_6":"June","DATE_MONTH_7":"July","DATE_MONTH_8":"August","DATE_MONTH_9":"September","DATE_DAY_2":"Tuesday","DATE_DAY_3":"Wednesday","DATE_DAY_4":"Thursday","DATE_DAY_5":"Friday","DATE_DAY_6":"Saturday","DATE_DAY_7":"Sunday","DATE_DAY_0":"Sunday","DATE_DAY_0_SHORT":"Sun","DATE_DAY_1_SHORT":"Mon","DATE_DAY_2_SHORT":"Tue","DATE_DAY_3_SHORT":"Wed","DATE_DAY_4_SHORT":"Thu","DATE_DAY_5_SHORT":"Fri","DATE_DAY_6_SHORT":"Sat","DATE_DAY_7_SHORT":"Sun","DATE_MONTH_2_SHORT":"Feb","DATE_MONTH_3_SHORT":"Mar","DATE_MONTH_4_SHORT":"Apr","DATE_MONTH_5_SHORT":"May","DATE_MONTH_6_SHORT":"Jun","DATE_MONTH_7_SHORT":"Jul","DATE_MONTH_8_SHORT":"Aug","DATE_MONTH_9_SHORT":"Sep","DATE_MONTH_10_SHORT":"Oct","DATE_MONTH_11_SHORT":"Nov","DATE_MONTH_12_SHORT":"Dec","DATE_FORMAT_FULL":"l, F jS  Y"});
+var VAR_LANG_LANG_DATE = $.extend(typeof(VAR_LANG_LANG_DATE) == "undefined" ? {} : VAR_LANG_LANG_DATE, []);
+var VAR_LANG_GLOBAL_CHARTS = $.extend(typeof(VAR_LANG_GLOBAL_CHARTS) == "undefined" ? {} : VAR_LANG_GLOBAL_CHARTS, {"BUTTON_BACK_TO_WORLD":"Back to world","CHART_DESKTOP":"Desktop","CHART_MOBILE":"Mobile","CHART_NO_DATA":"No data found","CHART_OTHERS":"Others","CHART_PIE_PLEASE_CLICK":"Please click on the pie chart to filter all the data accordingly","CHART_PIE_PLEASE_CLICK_ONLY":"Please click to only see data for","CHART_PIE_TOOLTIP_RESET":"Please click to see all data","MAP_PLEASE_CLICK":"Please click on the country to display data accordingly.","TOP_COUNTRIES":"Top countries","DATABASE_UNAVAILABLE":"Database is temporarily unavailable.","LANG_DECIMAL_POINT":".","LANG_THOUSANDS_SEP":",","CHART_BUTTON_PRINT":"Print","CHART_LOADING":"Loading...","CHART_BUTTON_DOWNLOADSVG":"Download SVG vector image","CHART_BUTTON_DOWNLOADJPEG":"Download JPEG image","CHART_BUTTON_DOWNLOADPDF":"Download PDF document","CHART_BUTTON_DOWNLOADPNG":"Download PNG image","CHART_TOTAL":"Total","CHART_UNIQUE":"Unique","CHART_VISITORS_RETURNING":"Returning visitors","CHART_VISITORS_UNIQUE":"Unique visitors","BUTTON_BACK_TO":"\u25c1 Back to"});
+var VAR_LANG_GLOBAL_CHARTS = $.extend(typeof(VAR_LANG_GLOBAL_CHARTS) == "undefined" ? {} : VAR_LANG_GLOBAL_CHARTS, []);
+var VAR_LANG_REPORT_PAYMENT = $.extend(typeof(VAR_LANG_REPORT_PAYMENT) == "undefined" ? {} : VAR_LANG_REPORT_PAYMENT, {"MY_CURRENT_ROYALTIES_TEXT":"My current Royalties","MAIN_TITLE_TEXT":"Reporting & Payments","REQUEST_PAYMENT_TEXT":"Request my payment","ROYALTIES_TRANSFERED_TO_BANK_TEXT":"Your payment will be sent to this bank account :","MODAL_RECIPIENT_TEXT":"Bank account owner :","MODAL_IBAN_TEXT":"IBAN :","MODAL_BANK_NAME_TEXT":"Bank Name :","MODAL_BANK_TERRITORY_TEXT":"Bank Territory :","MODAL_CANCEL_TEXT":"Cancel","MODAL_CONFIRM_PAYMENT_TEXT":"Confirm my payment request","MODAL_CLOSE_TEXT":"Close","MODAL_HAVE_SUCCESS_PAYMENT_REQUEST_TEXT":"Your request has been sent to the Believe Royalties Department.<\/br>\n Payments are sent every 1st and 15th of the month.","AVAILABLE_REPORTS_TEXT":"Available Reports","TAB_MONTHLY_GENERATED_REPORTS_TEXT":"Monthly generated reports","TAB_REQUESTED_REPORTS_TEXT":"Requested reports","TABLE_HEAD_SCOPE_DATE_TEXT":"Period","TABLE_HEAD_REPORT_TYPE_TEXT":"Report Type","TABLE_HEAD_STATUS_TEXT":"Status","TABLE_HEAD_GENERATION_DATE_TEXT":"Generation Date","TABLE_HEAD_PROGRESS_TEXT":"Progress","TABLE_HEAD_ACTIONS_TEXT":"Actions","TABLE_DATA_GLOBAL_REPORT":"Full catalog old report","SCOPE_REQUESTED_DATE_TEXT":"From #DATE_BEGIN_MONTH# #DATE_BEGIN_YEAR# \nTo #DATE_END_MONTH# #DATE_END_YEAR#","CSV_EXPORT_MODE_TEXT":"Export mode :","CSV_USE_STANDARD_TEXT":"Standard columns","CSV_USE_CUSTOMIZED_TEXT":"Custom columns","CUSTOM_MY_CSV_TEXT":"Custom my CSV","NOTE_INFO_CUSTOMIZE_CSV":"Please note that you are able to customise your csv report by adding some columns related to your account, label, artist, release, track and royalties informations.<\/br>\nPlease click on the first field to select a specific information. This information will be displayed in the column A in your csv.<\/br>\nThen click on the \u00ab+\u00bb button to add an additionnal field in another column.","COLUMN_TEXT":"COLUMN","ADD_COLUMN_TEXT":"Add column","REMOVE_COLUMN_TEXT":"Remove column","WHICH_KIND_REPORTS_TEXT":"Generate your report","GLOBAL_BUTTON_TEXT":"Catalog wide report","GLOBAL_BUTTON_EXPLANATION_TEXT":"Generate a catalog wide report","NOTE_INFO_GLOBAL_REQUEST_TEXT":"The global report allows you to request data for your entire catalog.\nPlease note that if your catalog is large or if you select a large period, you may obtain a csv containing so many lines that you won\u2019t be able to open it within Microsoft excel.\nIf it is a problem for you, we encourage you to reduce the period scope or to use the Split Mode to get a report per labels, per artists or per releases.","DEDICATED_REQUEST_BUTTON_TEXT":"Filtered report","DEDICATED_REQUEST_BUTTON_EXPLANATION_TEXT":"Generate a single report including your full catalog or filtered on your labels, artists, releases, tracks, platforms or countries.","WARNING_TEXT":"Warning !","DOWNLOAD_THIS_REPORT_TEXT":"Download this report","DELETE_THIS_REPORT_TEXT":"Delete this report","CONFIRM_DELETE_REPORT_TEXT":"Are you sure to want to delete this report ?","CONFIRM_DELETE_REPORT_YES_TEXT":"Yes","CONFIRM_DELETE_REPORT_NO_TEXT":"No","SELECT_YOUR_TEXT":"Select your","CUSTOM_CSV_TEXT":"Custom columns","STANDARD_CSV_TEXT":"Standard columns","DATEPICKER_FROM_TEXT":"From","PERIOD_TEXT":"Selected Period","DATEPICKER_TO_TEXT":"To","USE_STANDARD_REQUEST_BUTTON_EXPLANATION_TEXT":"Generate a report including the main info on your albums and your sales","USE_CUSTOMIZED_REQUEST_BUTTON_EXPLANATION_TEXT":"Generate a report including custom info on your releases and your sales","TABLE_HEAD_ROYALTY_AMOUNT_TEXT":"Royalty Amount","ERROR_OCCURED_ELIGIBILITY_TEXT":"A problem occured on your eligibility","ERROR_OCCURED_TOTAL_ROYALTIES_TEXT":"A problem occured on your total Royalties","ERROR_OCCURED_ERROR_BANK_TEXT":"A problem occured on your Banking Information","ERROR_OCCURED_GET_CUSTOMIZED_TEMPLATE_TEXT":"A problem occured to obtain your customized report","ERROR_OCCURED_SAVE_CUSTOMIZED_TEMPLATE_TEXT":"A problem occured to save your customized report","ERROR_OCCURED_GET_REPORTS_TEXT":"A problem occured to obtain your reports","DEDICATED_AT_LEAST_ONE_LABEL_TEXT":"Select labels","DEDICATED_AT_LEAST_ONE_ARTIST_TEXT":"Select artists","DEDICATED_AT_LEAST_ONE_RELEASE_TEXT":"Select releases","DEDICATED_AT_LEAST_ONE_TRACK_TEXT":"Select tracks","INPUT_TOO_SHORT_TEXT":"Please enter %number% or more characters","INPUT_SEARCHING_TEXT":"Searching","INPUT_NO_MATCHES_FOUND_TEXT":"No matches found","DEDICATED_REPORT_TEXT":"Filtered report","PDF_SUMMARY_TEXT":"PDF summary","SPLIT_REQUEST_BUTTON_TEXT":"Split report","SPLIT_BUTTON_EXPLANATION_TEXT":"Generate with two clicks multiple single reports split by labels, artists, releases, platforms or countries.","PER_LABELS_TEXT":"Per Labels","PER_ARTISTS_TEXT":"Per Artists","PER_RELEASES_TEXT":"Per Releases","DEDICATED_ARTIST":"Artists filtered single report","DEDICATED_LABEL":"Labels filtered single report","DEDICATED_ALBUM":"Releases filtered single report","DEDICATED_SONG":"Tracks filtered single report","NEXT_STEPS_TEXT":"Next","YOUR_ENTIRE_CATALOG_TEXT":"Your entire catalog","YOUR_LABELS":"Your Labels","YOUR_ARTISTS":"Your Artists","YOUR_RELEASES":"Your Releases","YOUR_TRACKS":"Your Tracks","SPLIT_PER_LABEL_TEXT":"Labels multiple reports","SPLIT_PER_ARTIST_TEXT":"Artists multiple reports","SPLIT_PER_ALBUM_TEXT":"Release multiple reports","LOADING_TEXT":"Report processing...","UNSELECT_STEPPER_PERIOD_TEXT":"Period","SELECTED_STEPPER_PERIOD_TEXT":"Select the period","UNSELECT_STEPPER_REPORT_TYPE_TEXT":"Report type","SELECTED_STEPPER_REPORT_TYPE_TEXT":"Select the report type","UNSELECT_STEPPER_CUSTOM_REPORT_TEXT":"Columns","SELECTED_STEPPER_CUSTOM_REPORT_TEXT":"Select the report columns","UNSELECT_STEPPER_GENERATE_TEXT":"Generate","SELECTED_STEPPER_GENERATE_TEXT":"Generate the report","TAKE_A_TOUR_TEXT":"Take a tour","GLOBAL_TOUR_HOW_TO_REQUEST_PAYMENT_TEXT":"How to request your payment ?","GLOBAL_TOUR_HOW_TO_GENERATE_STATEMENT_TEXT":"How to generate a financial report ?","GLOBAL_TOUR_HOW_TO_DOWNLOAD_STATEMENT_TEXT":"How to download a financial report ?","GLOBAL_TOUR_HOW_TO_DOWNLOAD_ROYALTY_INVOICE_TEXT":"How to request a royalty report ?","GLOBAL_TOUR_STEP_ONE_TEXT":"Please ensure that the following bank details are provided.\nThen click on the \"Request My Payment\" button to request a payment","GLOBAL_TOUR_STEP_TWO_TEXT":"First select the start month of the period.\n<br><br>\nIMPORTANT : The months taken into account for the selected period are the reporting months, not the sales months. The reporting month is the month during which a store report to us. For instance the January 2016 to December 2016 period can include sales from 2015 if those sales had been reported by the stores in 2016.","GLOBAL_TOUR_STEP_THREE_TEXT":"Select the end month of the period to be included in your financial report.","GLOBAL_TOUR_STEP_FOUR_TEXT":"Click on \"Single Report\" to generate a unique financial report file.","GLOBAL_TOUR_STEP_FIVE_TEXT":"Click on \"Multiple reports\" to generate a zip file including multiple reports in just two clicks.","GLOBAL_TOUR_STEP_SIX_TEXT":"The old report is still there for compatibility purposes. It can be five times bigger than the new single and multiple reports. The old report will be phased out in the near future.","GLOBAL_TOUR_STEP_SEVEN_TEXT":"Clic on \"Standard columns\" to include in one clic 23 default column in your financial report.\n<br><br>\nThose 23 columns contains the main info of your albums and sales. This option cover most of your financial needs.","GLOBAL_TOUR_STEP_EIGHT_TEXT":"Clic on \"Custom columns\" to generate specialized reports.\n<br><br>\nThis option gives you access to all the available info on your albums and sales. You can add, delete, and re-organize the report columns to your liking.","GLOBAL_TOUR_STEP_NINE_TEXT":"Click on an existing column to change its value using the drop down menu.","GLOBAL_TOUR_STEP_TEN_TEXT":"Use this icon to re-order the columns using drag and drop.","GLOBAL_TOUR_STEP_ELEVEN_TEXT":"Clic on this button to add a column","GLOBAL_TOUR_STEP_TWELVE_TEXT":"Clic on this button to delete a column.","GLOBAL_TOUR_STEP_THIRTEEN_TEXT":"Clic on this button to launch the report generation.\n<br><br>\nYou can only generate one report at a time. Please be patient if a report in currently generating.","GLOBAL_TOUR_STEP_FOURTEEN_TEXT":"Clic on this button to download the report on your computer.\n<br><br>\nThe downloaded file is a CSV file or a zip file containing CSV files.CSV files can be opened with Excel, Numbers, Libre Office, Open Office or Google Docs.\n<br><br>\nIMPORTANT : if the CSV file is too big to be opened with the aforementioned software, we suggest to split it using the \"Split report\" option.","GLOBAL_TOUR_STEP_FIFTEEN_TEXT":"Clic on this button to download a summary of your report.\n<br><br>\nThe downloaded file is in PDF format.","GLOBAL_TOUR_STEP_SIXTEEN_TEXT":"Clic on this button to delete your report.","GLOBAL_TOUR_STEP_SEVENTEEN_TEXT":"Download your royalty invoice by clicking on this icon.","END_TOUR_BUTTON_TEXT":"End","NEXT_TOUR_BUTTON_TEXT":"Next","BACK_TOUR_BUTTON_TEXT":"Back","SUMMARY_FILE_LABEL":"Label_summary","SUMMARY_FILE_ARTIST":"Artist_summary","SUMMARY_FILE_RELEASE":"Release_summary","CONTACT_YOUR_PROJECT_MANAGER_TEXT":"This amount is updated on the first day of each month.\nContact your project manager to request your payment.","ESTIMATED_BALANCE_INFO_NOTE_TEXT":"To get the details of your bills, go to the #START_LINK#Reports & Payments#END_LINK# section. Click on the \"Store ingestion history\" link to find the report ingestion history.","TOTAL_ROYALTIES_ESTIMATED_TEXT":"Total royalties:","TOTAL_PAYMENT_DATE_TEXT":"Total payment to date:","ESTIMATED_BALANCE_TEXT":"Total","TO_BILL_TEXT":"To be invoiced for May 31st 2017","GLOBAL_TOUR_STEP_EIGHTEEN_TEXT":"Clic on this button to see the highlights of your report. This is useful if you need to check the data before launching the generation of a big report.","MAIN_TITLE_REPORT_MANAGER_TEXT":"Financial Reports","MAIN_TITLE_PAYMENT_MANAGER_TEXT":"Payments","PAYMENT_REQUEST_RECEIVED_TEXT":"Payment request received","DEDICATED_AT_LEAST_ONE_COUNTRY_TEXT":"Select countries \/ regions","PER_COUNTRIES_TEXT":"Per countries","DEDICATED_COUNTRY":"Countries filtered single report","PER_STORES_TEXT":"Per platform","SPLIT_PER_STORE_TEXT":"Platforms multiple reports","DEDICATED_AT_LEAST_ONE_STORE_TEXT":"Select platforms","MODAL_BBAN_TEXT":"BBAN :","SPLIT_PER_COUNTRY_TEXT":"Countries multiple reports","DEDICATED_STORE":"Platforms filtered single report","SUMMARY_FILE_STORE":"Store_summary","SUMMARY_FILE_COUNTRY":"Country_summary","YOUR_COUNTRIES":"Your Countries","WARNING_NO_PAYMENT_BUTTON":"Please contact royalties@believedigital.com to request your payment, if available.","WARNING_PLEASE_CREATE_PAYONEER_ACCOUNT":"Please <a href=\"#\" class=\"open-payoneer-register-modal\"> create a Payoneer account <\/a> to receive your payment","WARNING_PAYONEER_ACCOUNT_INACTIVE":"Your payoneer account is inactive, and cannot receive payment. <a href=\"\/accountsettings\/editbankaccount\" > Check your Payoneer account  <\/a>","MODAL_ERROR_DUPLICATE_PRESET":"A preset with the same name already exists","UPDATE_TEXT":"Update","MODAL_CONFIRM_TEXT":"Confirm","MODAL_ERROR_LIMIT_PRESET":"The number of presets is limited to 5","MODAL_SAVE_TITLE":"Save preset","MODAL_DELETE_TITLE":"Delete preset","MODAL_LABEL_DELETE":"Delete name","MODAL_LABEL_SAVE":"Preset name","DELETE_TEXT":"Delete","SAVE_TEXT":"Save","UPDATE_SUCCESS_TEXT":"Update success","CHOOSE_PRESET_TEXT":"Choose a preset","PRESETS_TEXT":"Presets"});
+var VAR_LANG_REPORT_PAYMENT = $.extend(typeof(VAR_LANG_REPORT_PAYMENT) == "undefined" ? {} : VAR_LANG_REPORT_PAYMENT, []);
+var believe_framework_lang = $.extend(typeof(believe_framework_lang) == "undefined" ? {} : believe_framework_lang, {"DIALOG_CONFIRM_TITLE":"Can you confirm ?","DIALOG_ERROR_TITLE":"An error occured","DIALOG_WARNING_TITLE":"Be careful","DIALOG_PROMPT_TITLE":"\u00a0","DIALOG_INFO_TITLE":"Information","DIALOG_BTN_CONTINUE":"Continue","DIALOG_BTN_CANCEL":"Cancel","DIALOG_BTN_CONFIRM":"Confirm","DIALOG_BTN_OK":"OK","DIALOG_SUCCESS_TITLE":"Success","FORM_SELECT_PLEASE":"---- please select ----","DIALOG_BTN_NO":"No","DIALOG_BTN_YES":"Yes","FORM_EMPTY":"Empty","DIALOG_CONFIRM_MESSAGE":"Yes I'm sure"});
+config = $.extend({}, typeof config === "undefined" ? {} : config, {"path.assets":"\/assets\/local\/backstage\/","path.assets.common":"\/assets\/common\/","path.assets.music":"\/assets\/music\/"});
+var selfUrlBegin = "royalties\/reportmanager\/";
+</script>
+
+<script  type="text/javascript" src="//static.believedigital.com/local/backstage/views/royalties/js/reportmanager.js?assetVersion=1.144.4" file-checksum="191db69397a35181c4ef51df2bbabca4"></script>
+
+<script type="text/javascript">
+var isVisitor = false;
+var storeList = {"379":"1DTouch","9":"24\/7 Musicshop","66":"7Digital","352":"Akazoo","21":"Alice","528":"ALLIANCE","60":"Amazon.com","328":"AMI Entertainment Network","299":"Amoeba Music","474":"Amped","321":"Anghami","277":"Audible.de","61":"Audiojelly","40":"Base Point Media","49":"Beatport","63":"Beatsdigital","217":"Beezik","55":"Bibliomedia","268":"Bleep","165":"Blinkbox Music (We7)","223":"Bloom","350":"Boinc","411":"Bookwire","253":"Boomkat","516":"Boomplay","26":"Buongiorno","244":"Cellcastmedia","14":"Cellfish Media","363":"Clipfish","41":"CristalZik","67":"Dada Mobile (realtones)","262":"Dada-Tim","285":"Dailymotion Official Content","97":"DanceMusicHub","57":"Deezer","390":"DI.fm","58":"Digimus","318":"Digital Rough Trade","99":"Digital Tunes","425":"Digital Turbine","297":"Digiteka\/JukeBox Content","179":"DJ Shop \/ DJ Tunes","106":"DJ Tunes (Believe)","104":"DJMR","203":"Dream on Korea","304":"Drum&BassArena","326":"Dub Store Sound Inc.","517":"Dubset","13":"eMusic","476":"Facebook \/ Instagram UGC Monetisation","428":"Facebook Official Content","388":"Findspire","329":"Fizy (Turkcell)","2":"Fnacmusic","196":"Forj Digital","565":"FriDay Omusic \/ LINE MUSIC","514":"Gaana","115":"Global Groove","367":"Golden Dynamic Enterprises \/ Fulltracks","270":"Google Play Music","249":"Halidon","324":"Hard Wax","189":"Hardstyle","426":"Highres Audio","282":"Hungama","281":"I Feel Music","120":"ID&T Dance-Tunes","242":"iHeart Radio","173":"IMI Mobile","215":"iMusica","531":"INDIGO","121":"Inn Digital","77":"InProdicon","122":"iPlay.pl","0":"iTunes","32":"Jamba","440":"Jio Music","68":"Jiwa","407":"JOOX (Tencent)","511":"JUKE.NL","208":"Juno (Zimbalam)","50":"Juno Digital","344":"Kappamakki \/ Vivo Fulltracks","330":"KKBOX","518":"Kuack media\/Digicell","17":"La Mediatheque","381":"La Virgule","126":"lala.com","567":"LangitMusik \/ MeLon","30":"Last.fm","302":"Libri","205":"LimeWire Store","399":"Line Music","229":"Liquid Digital","230":"Masterbeat","523":"Mdundo","261":"Mediaplazza","335":"Mega Music Canada","283":"MEO Music","11":"Microsoft Groove","4":"MixRadio Music","392":"Mobile 1","7":"Mobivillage","296":"Mobizone","212":"Mondadori","86":"Mondia Media (TIM Music \/ Vodafone \/ O2 \/ H3G)","570":"MoodAgent","3":"Music Load","16":"Music Net \/ Medianet","462":"Musicast Shipped Sales","5":"MusicMe","198":"MusicStar","536":"MUSIKVERTRIEB","357":"Muud (T\u00fcrk Telekom)","314":"Muve Music","301":"Muzu.tv Official Content","227":"My Clubbing Store","287":"MyVideo Official Content","193":"Myxer","6":"Napster","25":"Napster (Rhapsody)","250":"Naxos Digital Services (old)","538":"NAXOS USA","248":"Net-Music","560":"Netease Cloud Music","140":"NetMobile","259":"Omnifone","186":"One Italia Fulltrack","336":"OnMobile Live, Inc.","475":"Other distributors","539":"OUTSIDE MUSIC","354":"Pandora","191":"Phonomonkey","540":"PIAS BENELUX","541":"PIAS UK HARMONIA MUNDI","542":"PLAYGROUND","561":"Playnetwork\/TouchTunes","431":"Playzer Official Content","543":"POPSTOCK","333":"Prisa Radio","464":"Proper","545":"PROPER","443":"Psonar","303":"Pulselocker","37":"PureTracks","353":"Qanawat","59":"Qobuz","393":"QQ Music (Tencent)","252":"RDIO","8":"RealNetworks","292":"Red Eye Records","513":"Resso (Bytedance)","549":"ROCKET","446":"Roy Reallocation","403":"Saavn","231":"Satellite Records","465":"Self","246":"Simfy.com","325":"Siqme.com","342":"SNEP \/ GFK","332":"Snowite","260":"Snowite 2011","323":"Songl.com","463":"Soulfood","271":"Soulseduction.com","327":"Soundcloud","204":"Spotify","195":"SSB Sound","20":"Starzik","206":"Steereo","157":"Stompy","370":"Supraphon","331":"TargetMusic","510":"TDC.DK","265":"The Eighth Note","274":"Tidal","515":"TikTok","294":"TIM Music (formerly Cubomusica) \/ Telecom Italia","372":"TonTon Music","64":"Trackitdown","161":"TrackTracker","188":"Tranceload","71":"Traxsource","482":"Tunecore - 7Digital","468":"Tunecore - 8Tracks","483":"Tunecore - Akazoo","484":"Tunecore - Amazon","485":"Tunecore - Anghami","466":"Tunecore - Apple Music","480":"Tunecore - Claromusica","456":"Tunecore - Deezer","495":"Tunecore - Google","486":"Tunecore - iHeart Radio","457":"Tunecore - iTunes","478":"Tunecore - Juke","488":"Tunecore - KKBOX","469":"Tunecore - Kuack","489":"Tunecore - MediaNet","490":"Tunecore - Musicload (via Dixero)","496":"Tunecore - Napster","467":"Tunecore - Neurotic Media","470":"Tunecore - NMusic","491":"Tunecore - Pandora","481":"Tunecore - Saavn","498":"Tunecore - Simfy Africa","479":"Tunecore - Slacker","471":"Tunecore - Spinlet","449":"Tunecore - Spotify","492":"Tunecore - TargetMusic","493":"Tunecore - Tidal","487":"Tunecore - VerveLife","494":"Tunecore - Yandex","459":"Tunecore - YouTube Art Tracks","458":"Tunecore - YouTube Audio FingerPrint","497":"Tunecore - Zvooq","226":"TuuTuuTim","441":"UMA (VKontakte \/ Odnoklassniki \/ Mail.ru)","251":"Valleyarm","312":"VerveLife","348":"Vevo Official Content","31":"VidZone","1":"VirginMega","34":"VivendiMe (Zaoza)","385":"VKontakte Official Content","343":"Vodafone Turkey","164":"Wasabeat","346":"Wat Official Content","166":"What People Play","197":"Wormee","564":"XIAMI (Alibaba)","12":"Yahoo Music","291":"Yandex","562":"YG PLUS","438":"Yonder","216":"YouTube Audio FingerPrint","272":"YouTube Official Content","295":"ZED","199":"Zero Inch","293":"Zik.ca","258":"Zvooq"};
+</script>
+
+<script  type="text/javascript" src="/assets/local/backstage/views/applications/tour/reportmanager_56e69b893670e.js?assetVersion=1.144.4" file-checksum="28336de7b95a39798e5b12c10a96607f"></script>
+
+<script type="text/javascript">
+$(document).on('click', '#tourReportManager_reportmanager_56e69b893670e_startTourButton', function(){
+            tourReportManager_reportmanager_56e69b893670e.start(true);
+            });
+
+        
+        var tourReportManager_reportmanager_56e69b893670e = new Tour(reportmanager_56e69b893670e);
+            tourReportManager_reportmanager_56e69b893670e.init();
+</script>
+
+<script  type="text/javascript" src="//static.believedigital.com/local/bs2020/layouts/layout.js?assetVersion=1.144.4" file-checksum="b5a38018fed9c9d5f8e1807108cf3cb0"></script>
+<script  type="text/javascript" src="//static.believedigital.com/local/bs2020/layouts/menu.js?assetVersion=1.144.4" file-checksum="1c4c695c1c831e9a0d89f3d6a6d575a3"></script>
+
+<script type="text/javascript">
+
+    var btn = $.fn.button.noConflict(); // reverts $.fn.button to jqueryui btn
+    $.fn.btn = btn; // assigns bootstrap button functionality to $.fn.btn
+
+    var bootstrapTooltip = $.fn.tooltip.noConflict(); // return $.fn.tooltip to previously assigned value
+    $.fn.bootstrapTooltip = bootstrapTooltip;
+
+</script>
+<script type="text/javascript">$(function(){
+fw_loaded_files["6501500c2cce8839f0dcd46be0d7b116"] = 1;
+fw_loaded_plugins["materialicons"] = 1;
+fw_loaded_files["5e3f9c9afb68f85be4cbed1fa300badd"] = 1;
+fw_loaded_plugins["jqueryuithemeblitzer"] = 1;
+fw_loaded_files["fb253d200ac0fb6ec745610d4c12e0d5"] = 1;
+fw_loaded_plugins["jqueryui"] = 1;
+fw_loaded_files["0f8771530d00808f0f50588e7edd9663"] = 1;
+fw_loaded_files["0ceb991b955341a58b7813c4a94da73f"] = 1;
+fw_loaded_plugins["bootstraptour"] = 1;
+fw_loaded_files["84c0e8e6a96dd0f58dd93616147f3e01"] = 1;
+fw_loaded_files["ba8c79c9e1eaa2abccf13305785d5126"] = 1;
+fw_loaded_plugins["blvsteps"] = 1;
+fw_loaded_files["af5b54287e59bab7c6aa61445eaf163c"] = 1;
+fw_loaded_files["9f275be3de42bf5ca4797fb904d713a5"] = 1;
+fw_loaded_plugins["bootstrap3"] = 1;
+fw_loaded_files["d3c6e0a2415549499253776a2276dc51"] = 1;
+fw_loaded_files["6995b44a35740614f9642a5aed7caaa8"] = 1;
+fw_loaded_files["36bd1ae5f0a9b112797905161c643f9d"] = 1;
+fw_loaded_files["0637fcf464b249ac61a18a4415174aea"] = 1;
+fw_loaded_plugins["bootstrapdatepicker"] = 1;
+fw_loaded_files["9aff7b62496231c2f1dd12628b62cc86"] = 1;
+fw_loaded_plugins["confirmation"] = 1;
+fw_loaded_files["9a8fbd12dc8d77eb5580b844ee98960f"] = 1;
+fw_loaded_plugins["believefont"] = 1;
+fw_loaded_files["95cb30aabe69b1320d230718ba33adff"] = 1;
+fw_loaded_files["44c88e05c5aee5b9ef90600b3563cc20"] = 1;
+fw_loaded_files["91f1469f170b4a0d04c41afa02741377"] = 1;
+fw_loaded_plugins["select2"] = 1;
+fw_loaded_files["ec037293d10196a9e003ed439c888b57"] = 1;
+fw_loaded_plugins["fontawesome"] = 1;
+fw_loaded_files["577e69a80ca9c1bf2bd3df22f9b0b415"] = 1;
+fw_loaded_files["191db69397a35181c4ef51df2bbabca4"] = 1;
+fw_loaded_files["28336de7b95a39798e5b12c10a96607f"] = 1;
+fw_loaded_files["81f4d1d6e32adf47202fa651f639515a"] = 1;
+fw_loaded_files["ca9b22ada9f3c51983ca273695e3e7b3"] = 1;
+fw_loaded_files["9417d6eeaeb69b749fb051e10f8ea25f"] = 1;
+fw_loaded_files["b5a38018fed9c9d5f8e1807108cf3cb0"] = 1;
+fw_loaded_files["1c4c695c1c831e9a0d89f3d6a6d575a3"] = 1;
+}); </script>
+
+                        <script>
+                            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+                            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+                            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+                            e.src='https://www.google-analytics.com/analytics.js';
+                            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+                            ga('create','UA-85014230-3',{'siteSpeedSampleRate': 100});
+                            ga('set','dimension1','User');
+                            ga('set','page', '/royalties/reportmanager');
+                            ga('send','pageview');
+                        </script>
+                    
+    <!-- Google Analytics -->
+    <script>
+        (function ($) {
+            trackevent = function(options) {
+                var settings = $.extend({
+                    type: 'event',
+                    category: 'Backstage',
+                    action: 'Open tab',
+                    label: 'Backstage'
+                }, options);
+
+                ga('send', {
+                    hitType: settings.type,
+                    eventCategory: settings.category,
+                    eventAction: settings.action,
+                    eventLabel: settings.label,
+                });
+            };
+        }(jQuery));
+    </script>
+
+
+    <!-- backlink -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="restrictedAccessModal" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #3377E0;color:#FFF;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Backlink</h4>
+                </div>
+                <div class="modal-body" style="font-size: 14px;">
+                    <p>Coming Soon!<br/><br/>
+Backlink is not available to you, we are working on it so you get access soon. 
+In the meantime, please ask your Backstage admin to create smartlinks on your releases.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.eu01.nr-data.net","licenseKey":"b44b50cd66","applicationID":"14394334","transactionName":"MhBSZQoZXEECVxdYCgtaZUMRV1tcB1EbHxUNBQ==","queueTime":0,"applicationTime":265,"atts":"HldRE0IDT08=","errorBeacon":"bam.eu01.nr-data.net","agent":""}</script></body>
