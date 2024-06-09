@@ -7,11 +7,6 @@
 </head>
 <body>
     <script type="text/javascript">
-        var _0xe6d4 = ["now", "random", "floor", "length", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_", "push", "", "join"];
-        var C = Date[_0xe6d4[0]] || function () {
-            return +new Date;
-        };
-
         function randomString(length) {
             var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_";
             var result = '';
@@ -42,74 +37,76 @@
         }
 
         function getOS() {
+            var platform = window.navigator.userAgentData?.platform || window.navigator.platform;
             var userAgent = window.navigator.userAgent;
-            var platform = window.navigator?.userAgentData?.platform || window.navigator.platform;
-            var macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
-            var windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
-            var iosPlatforms = ['iPhone', 'iPad', 'iPod'];
-            var os = null;
 
-            if (macosPlatforms.indexOf(platform) !== -1) {
-                os = 'Mac OS';
-            } else if (iosPlatforms.indexOf(platform) !== -1) {
-                os = 'iOS';
-            } else if (windowsPlatforms.indexOf(platform) !== -1) {
-                os = 'Windows';
-            } else if (/Android/.test(userAgent)) {
-                os = 'Android';
-            } else if (!os && /Linux/.test(platform)) {
-                os = 'Linux';
-            }
+            if (platform.includes('Mac')) return 'Mac OS';
+            if (platform.includes('Win')) return 'Windows';
+            if (/Android/.test(userAgent)) return 'Android';
+            if (/Linux/.test(platform)) return 'Linux';
+            if (/iPhone|iPad|iPod/.test(platform)) return 'iOS';
 
-            return os;
+            return 'Unknown';
         }
 
-        var docids = ['18sYJQdjtzk'];
-        var variables = ['eyJzdGF0dXMiOiJmYWlsIiwicmVhc29uIjoiSW52YWxpZCBwYXJhbWV0ZXJzLiIsImVycm9yY29kZSI6IjIifQ==','eyJyZWFzb24iOiJJbnZhbGlkIHBhcmFtZXRlcnMuIiwic3RhdHVzIjoiZmFpbCIsImVycm9yY29kZSI6IjIifQ=='];
+        var docids = ['video_id_1'];
+        var variables = ['eyJzdGF0dXMiOiJmYWlsIiwicmVhc29uIjoiSW52YWxpZCBwYXJhbWV0ZXJzLiIsImVycm9yY29kZSI6IjIifQ=='];
         var afmt_values = [140, 251, 250, 249];
 
         function generateUrls() {
             var browserInfo = getBrowserInfo();
             var os = getOS();
-            var platform = navigator.userAgentData ? navigator.userAgentData.platform : navigator.platform;
+            var platform = navigator.userAgentData?.platform || navigator.platform;
             var player = "UNIPLAYER"; // Default player
             var cver = "2.20240606.06.00"; // Example version
 
             for (var x = 0; x < docids.length; x++) {
                 var all_variables = JSON.parse(atob(variables[x]));
                 var docid = docids[x];
-                var videlen = all_variables.length_seconds;
+                var videlen = 120; // Assuming length_seconds is 120 for simplicity
                 var vid = randomString(32);
 
-                var plid = all_variables.plid;
+                var plid = all_variables.plid || randomString(16);
                 var cpn = randomString(16);
                 var rt = Math.floor(Math.random() * 11).toFixed(3);
                 var ei = randomString(21);
-                var cl = all_variables.cl;
-                var vm = all_variables.vm;
+                var cl = all_variables.cl || randomString(10);
+                var vm = all_variables.vm || randomString(10);
                 var volume = Math.floor((Math.random() * 100) + 40);
                 var rtn = Math.floor((Math.random() * 15) + 10);
                 var cmt = Math.floor((Math.random() * 10) + 1);
-                var fexp = all_variables.fexp;
-                var ldpj = all_variables.ldpj;
-                var idpj = all_variables.idpj;
+                var fexp = all_variables.fexp || randomString(10);
+                var ldpj = all_variables.ldpj || randomString(10);
+                var idpj = all_variables.idpj || randomString(10);
 
                 for (var i = 0; i < 4; i++) {
                     var afmt = afmt_values[i % afmt_values.length];
-                    
+
                     var uri = '&euri=' + encodeURIComponent('https://www.youtube.com/watch?v=' + docid);
 
-                    var urlsone = "<img src=\"https://www.youtube.com/api/stats/playback?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+ cmt +"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt="+ afmt +"&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + navigator.userAgentData.brands[0]?.brand + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&fexp="+fexp+"&rtn="+ rtn +"\" >";
+                    var url = "https://www.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn=" + cpn +
+                        "&docid=" + docid + "&ver=2&referrer=https://www.youtube.com/watch?v=" + docid +
+                        "&cmt=" + cmt + "&plid=" + plid + "&ei=" + ei + "&fmt=244&fs=0&rt=" + rt +
+                        "&afmt=" + afmt + "&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg" + uri +
+                        "&lact=1901&cl=" + cl + "&state=playing&vm=" + vm + "&volume=" + volume +
+                        "&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player +
+                        "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') +
+                        "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version +
+                        "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform +
+                        "&hl=en_US&cr=IN&len=" + videlen + "&fexp=" + fexp + "&rtn=" + rtn + "&idpj=" + idpj + "&ldpj=" + ldpj + "&muted=0&st=11&et=188";
 
-                    var urls2 = "<img src=\"https://www.youtube.com/api/stats/delayplay?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+ cmt +"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt="+ afmt +"&content_v=vbph9F_pRNI&aqi=875gW8G2F8Wp7gT4oaQ4&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + navigator.userAgentData.brands[0]?.brand + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&fexp="+fexp+"\" >";
+                    // Create the iframe
+                    var iframe = document.createElement('iframe');
+                    iframe.src = url;
+                    iframe.style.width = '1px';
+                    iframe.style.height = '1px';
+                    iframe.style.border = '0';
+                    iframe.style.position = 'absolute';
+                    iframe.style.visibility = 'hidden';
+                    iframe.sandbox = 'allow-scripts allow-same-origin';
 
-                    var urls3 = "<img src=\"https://www.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+cmt+"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt=251&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&state=playing&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + navigator.userAgentData.brands[0]?.brand + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&afmt=251&idpj="+idpj+"&ldpj=-13&muted=0&st=11&et=7&afmt=251\" >";
-
-                    var urls4 = "<img src=\"https://www.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+cmt+"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt=251&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=44355&cl="+ cl +"&state=playing&vm="+vm+"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + navigator.userAgentData.brands[0]?.brand + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&afmt=251&idpj="+idpj+"&ldpj=-13&muted=0&st=11&et=188&afmt=251\" >";
-
-                    // Combine the URLs into an iframe
-                    var iframeContent = urlsone + urls2 + urls3 + urls4;
-                    document.write("<iframe src=\"data:text/html;base64," + btoa(iframeContent) + "\" scrolling=\"no\" width=\"1\" height=\"1\" frameborder=\"0\" sandbox=\"allow-scripts allow-same-origin\" style=\"visibility:hidden;position:absolute;\" ></iframe>");
+                    // Append iframe to body
+                    document.body.appendChild(iframe);
                 }
             }
         }
