@@ -53,6 +53,14 @@
         var variables = ['eyJzdGF0dXMiOiJmYWlsIiwicmVhc29uIjoiSW52YWxpZCBwYXJhbWV0ZXJzLiIsImVycm9yY29kZSI6IjIifQ=='];
         var afmt_values = [140, 251, 250, 249];
 
+        function sendRequest(url, delay) {
+            setTimeout(function() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", url, true);
+                xhr.send();
+            }, delay);
+        }
+
         function generateUrls() {
             var browserInfo = getBrowserInfo();
             var os = getOS();
@@ -79,31 +87,21 @@
                 var ldpj = all_variables.ldpj || randomString(10);
                 var idpj = all_variables.idpj || randomString(10);
 
-                for (var i = 0; i < 4; i++) {
-                    var afmt = afmt_values[i % afmt_values.length];
+                var afmt = afmt_values[x % afmt_values.length];
 
-                    var uri = '&euri=' + encodeURIComponent('https://www.youtube.com/watch?v=' + docid);
+                var playbackUrl = "https://www.youtube.com/api/stats/playback?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+ cmt +"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt="+ afmt +"&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&fexp="+fexp+"&rtn="+ rtn;
+                
+                var delayplayUrl = "https://www.youtube.com/api/stats/delayplay?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+ cmt +"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt="+ afmt +"&content_v=vbph9F_pRNI&aqi=875gW8G2F8Wp7gT4oaQ4&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&fexp="+fexp;
 
-                    var urls = [
-                        "https://www.youtube.com/api/stats/playback?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+ cmt +"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt="+ afmt +"&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&fexp="+fexp+"&rtn="+ rtn,
-                        "https://www.youtube.com/api/stats/delayplay?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+ cmt +"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt="+ afmt +"&content_v=vbph9F_pRNI&aqi=875gW8G2F8Wp7gT4oaQ4&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&fexp="+fexp,
-                        "https://www.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+cmt+"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt=251&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&state=playing&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&afmt=251&idpj="+idpj+"&ldpj=-13&muted=0&st=11&et=7&afmt=251",
-                        "https://www.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+cmt+"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt=251&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=44355&cl="+ cl +"&state=playing&vm="+vm+"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&afmt=251&idpj="+idpj+"&ldpj=-13&muted=0&st=11&et=188&afmt=251"
-                    ];
+                var watchtimeUrl1 = "https://www.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+cmt+"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt=251&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&state=playing&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&afmt=251&idpj="+idpj+"&ldpj=-13&muted=0&st=11&et=7&afmt=251";
 
-                    urls.forEach(function(url) {
-                        var iframe = document.createElement('iframe');
-                        iframe.src = url;
-                        iframe.style.width = '1px';
-                        iframe.style.height = '1px';
-                        iframe.style.border = '0';
-                        iframe.style.position = 'absolute';
-                        iframe.style.visibility = 'hidden';
-                        iframe.sandbox = 'allow-scripts allow-same-origin';
+                var watchtimeUrl2 = "https://www.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+cmt+"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt=251&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=44355&cl="+ cl +"&state=playing&vm="+vm+"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&afmt=251&idpj="+idpj+"&ldpj=-13&muted=0&st=11&et=188&afmt=251";
 
-                        document.body.appendChild(iframe);
-                    });
-                }
+                // Send xhr requests with delays
+                sendRequest(playbackUrl, 0);        // No delay
+                sendRequest(delayplayUrl, 1000);   // 1-second delay
+                sendRequest(watchtimeUrl1, 2000);  // 2-second delay
+                sendRequest(watchtimeUrl2, 3000);  // 3-second delay
             }
         }
 
