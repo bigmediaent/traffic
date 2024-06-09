@@ -3,111 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Device Info URL Generator</title>
+    <title>Before Unload with Redirect</title>
 </head>
 <body>
-    <script type="text/javascript">
-        function randomString(length) {
-            var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_";
-            var result = '';
-            for (var i = 0; i < length; i++) {
-                result += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            return result;
-        }
+    <h1>Welcome to My Website</h1>
+    <p>Try to close this tab or navigate away to see the prompt.</p>
 
-        function getBrowserInfo() {
-            var ua = navigator.userAgent;
-            var tem;
-            var M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-            if (/trident/i.test(M[1])) {
-                tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-                return { name: 'IE', version: (tem[1] || '') };
-            }
-            if (M[1] === 'Chrome') {
-                tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
-                if (tem != null) return { name: tem[1].replace('OPR', 'Opera'), version: tem[2] };
-            }
-            M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
-            if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
-            return {
-                name: M[0],
-                version: M[1]
-            };
-        }
+    <script>
+        window.addEventListener('beforeunload', function (e) {
+            var confirmationMessage = 'Are you sure you want to leave?';
+            e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
+            return confirmationMessage; // Gecko, WebKit, Chrome <34
+        });
 
-        function getOS() {
-            var platform = window.navigator.userAgentData?.platform || window.navigator.platform;
-            var userAgent = window.navigator.userAgent;
-
-            if (platform.includes('Mac')) return 'Mac OS';
-            if (platform.includes('Win')) return 'Windows';
-            if (/Android/.test(userAgent)) return 'Android';
-            if (/Linux/.test(platform)) return 'Linux';
-            if (/iPhone|iPad|iPod/.test(platform)) return 'iOS';
-
-            return 'Unknown';
-        }
-
-        var docids = ['video_id_1'];
-        var variables = ['eyJzdGF0dXMiOiJmYWlsIiwicmVhc29uIjoiSW52YWxpZCBwYXJhbWV0ZXJzLiIsImVycm9yY29kZSI6IjIifQ=='];
-        var afmt_values = [140, 251, 250, 249];
-
-        function sendRequest(url, delay) {
-            setTimeout(function() {
-                var xhr = new XMLHttpRequest();
-                // Using a public CORS proxy service
-                xhr.open("GET", 'https://cors-anywhere.herokuapp.com/' + url, true);
-                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                xhr.send();
-            }, delay);
-        }
-
-        function generateUrls() {
-            var browserInfo = getBrowserInfo();
-            var os = getOS();
-            var platform = navigator.userAgentData?.platform || navigator.platform;
-            var player = "UNIPLAYER"; // Default player
-            var cver = "2.20240606.06.00"; // Example version
-
-            for (var x = 0; x < docids.length; x++) {
-                var all_variables = JSON.parse(atob(variables[x]));
-                var docid = docids[x];
-                var videlen = 120; // Assuming length_seconds is 120 for simplicity
-                var vid = randomString(32);
-
-                var plid = all_variables.plid || randomString(16);
-                var cpn = randomString(16);
-                var rt = Math.floor(Math.random() * 11).toFixed(3);
-                var ei = randomString(21);
-                var cl = all_variables.cl || randomString(10);
-                var vm = all_variables.vm || randomString(10);
-                var volume = Math.floor((Math.random() * 100) + 40);
-                var rtn = Math.floor((Math.random() * 15) + 10);
-                var cmt = Math.floor((Math.random() * 10) + 1);
-                var fexp = all_variables.fexp || randomString(10);
-                var ldpj = all_variables.ldpj || randomString(10);
-                var idpj = all_variables.idpj || randomString(10);
-
-                var afmt = afmt_values[x % afmt_values.length];
-
-                var playbackUrl = "https://www.youtube.com/api/stats/playback?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+ cmt +"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt="+ afmt +"&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&fexp="+fexp+"&rtn="+ rtn;
-                
-                var delayplayUrl = "https://www.youtube.com/api/stats/delayplay?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+ cmt +"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt="+ afmt +"&content_v=vbph9F_pRNI&aqi=875gW8G2F8Wp7gT4oaQ4&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&fexp="+fexp;
-
-                var watchtimeUrl1 = "https://www.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+cmt+"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt=251&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=1901&cl="+ cl +"&state=playing&vm="+ vm +"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&afmt=251&idpj="+idpj+"&ldpj=-13&muted=0&st=11&et=7&afmt=251";
-
-                var watchtimeUrl2 = "https://www.youtube.com/api/stats/watchtime?ns=yt&el=detailpage&cpn="+ cpn +"&docid="+ docid +"&ver=2&referrer=https://www.youtube.com/watch?v=00EW7KjEoxo&cmt="+cmt+"&plid="+ plid +"&ei="+ ei +"&fmt=244&fs=0&rt="+ rt +"&afmt=251&content_v=vbph9F_pRNI&of=0UMsAsiWjMai5HFoBEgwKg&euri&lact=44355&cl="+ cl +"&state=playing&vm="+vm+"&volume="+ volume +"&c=" + browserInfo.name + "&cver=" + cver + "&cplayer=" + player + "&cbrand=" + (navigator.userAgentData?.brands[0]?.brand || 'unknown') + "&cbr=" + browserInfo.name + "&cbrver=" + browserInfo.version + "&cmodel=gt-i9300&cos=" + os + "&cosver=" + platform + "&cplatform=" + platform + "&hl=en_US&cr=IN&len="+videlen+"&afmt=251&idpj="+idpj+"&ldpj=-13&muted=0&st=11&et=188&afmt=251";
-
-                // Send xhr requests with delays
-                sendRequest(playbackUrl, 0);        // No delay
-                sendRequest(delayplayUrl, 1000);   // 1-second delay
-                sendRequest(watchtimeUrl1, 2000);  // 2-second delay
-                sendRequest(watchtimeUrl2, 3000);  // 3-second delay
-            }
-        }
-
-        generateUrls();
+        window.addEventListener('unload', function () {
+            window.location.href = 'https://www.example.com'; // Replace with your URL
+        });
     </script>
 </body>
 </html>
